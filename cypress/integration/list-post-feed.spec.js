@@ -19,14 +19,14 @@ describe('Post Feed', () => {
       num_comments: 113,
     };
 
-    cy.server({force404: true});
+    cy.server({ force404: true });
 
     cy.route({
       method: 'GET',
       url: '/',
       response: [
-        {id: 1, name: post1},
-        {id: 2, name: post2},
+        { id: 1, name: post1 },
+        { id: 2, name: post2 },
       ],
     });
 
