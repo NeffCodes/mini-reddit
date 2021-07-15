@@ -26,4 +26,4 @@ function timeout(ms) {
 export async function delayedMockPostData() {
   await timeout(3000);
   return mockPostData;
-};
+}

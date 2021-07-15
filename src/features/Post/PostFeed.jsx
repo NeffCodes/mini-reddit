@@ -21,7 +21,7 @@ export const PostFeed = () => {
       <ul>
         {postList.map((postData, index) => (
           <li key={index} data-testid={postData.subreddit}>
-            <Post content={postData} />
+            <Post content={postData.data} i={index} />
           </li>
         ))}
       </ul>

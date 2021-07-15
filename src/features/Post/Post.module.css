@@ -27,9 +27,7 @@ header {
     text-decoration: none;
     color: #51637d;
 }
-.detailsSubreddit:visited {
-    color: #9b9b9b ;
-}
+
 .detailsAuthor {
  color: #9FA9B7;
 }
@@ -41,4 +39,12 @@ header {
 .comments {
     border-top: 1px solid #51637d;
     padding-top: 2%;
+    margin-top: 2%;
+}
+
+.post img, .post video{
+    max-height: 512px;
+    max-width: 100%;
+    margin: 0 auto;
+    display: block;
 }

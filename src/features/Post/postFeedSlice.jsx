@@ -1,11 +1,14 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { delayedMockPostData } from '../../utils/mockData';
+// import { delayedMockPostData } from '../../utils/mockData';
+import { fetchRedditPosts } from '../../api/reddit-api';
 
-export const fetchPosts = createAsyncThunk('postFeed/fetchPosts', async () => {
-  const response = await delayedMockPostData();
-  console.log(response);
-  return response;
-});
+export const fetchPosts = createAsyncThunk(
+  'postFeed/fetchPosts',
+  async subreddit => {
+    const response = await fetchRedditPosts(subreddit);
+    return response;
+  },
+);
 
 export const postFeedSlice = createSlice({
   name: 'postFeed',
@@ -24,14 +27,14 @@ export const postFeedSlice = createSlice({
       state.hasLoaded = false;
     },
     [fetchPosts.fulfilled]: (state, action) => {
-      console.log('fulfilled', action);
+      console.log('fulfilled');
       state.isLoading = false;
       state.hasError = false;
       state.hasLoaded = true;
       state.posts = action.payload;
     },
     [fetchPosts.rejected]: (state, action) => {
-      console.log('error:', action);
+      console.log('error');
       state.isLoading = false;
       state.hasError = true;
       state.hasLoaded = false;
