@@ -1,0 +1,29 @@
+.title {
+    color: #51637d;
+}
+.selftext {
+    color: #51637d;
+    font-weight: 400;
+}
+.link {
+    color: #51637d;
+    font-weight: 400;
+    text-decoration: none;
+}
+.link:hover {
+    color: red;
+    text-decoration: underline;
+}
+
+.media {
+    width: 100%;
+    background-color: #9FA9B7;
+}
+
+.media img, .media video{
+    background-color: rgb(146, 146, 146);
+    max-height: 512px;
+    max-width: 100%;
+    margin: 0 auto;
+    display: block;
+}
