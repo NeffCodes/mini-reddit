@@ -1,6 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-// import { delayedMockPostData } from '../../utils/mockData';
-import { fetchRedditPosts } from '../../api/reddit-api';
+import { fetchRedditPosts, fetchPostComments } from '../../api/reddit-api';
 
 export const fetchPosts = createAsyncThunk(
   'postFeed/fetchPosts',
@@ -10,13 +9,21 @@ export const fetchPosts = createAsyncThunk(
   },
 );
 
+export const loadComments = createAsyncThunk(
+  'postFeed/loadComments',
+  async ({ index, permalink }) => {
+    const comments = await fetchPostComments(permalink);
+    return { index: index, comments: comments };
+  },
+);
+
 export const postFeedSlice = createSlice({
   name: 'postFeed',
   initialState: {
     posts: [],
     isLoading: false,
     hasError: false,
-    hasLoaded: false,
+    selectedSub: 'hot',
   },
   reducers: {},
   extraReducers: {
@@ -24,20 +31,45 @@ export const postFeedSlice = createSlice({
       console.log('pending');
       state.isLoading = true;
       state.hasError = false;
-      state.hasLoaded = false;
     },
     [fetchPosts.fulfilled]: (state, action) => {
       console.log('fulfilled');
       state.isLoading = false;
       state.hasError = false;
-      state.hasLoaded = true;
       state.posts = action.payload;
+      state.posts.forEach((post, i) => {
+        post.index = i;
+        post.comments = [];
+        post.showComments = false;
+        post.isLoadingComments = false;
+        post.errorComment = false;
+        return post;
+      });
     },
     [fetchPosts.rejected]: (state, action) => {
-      console.log('error');
+      console.log('error:', action.error.message);
       state.isLoading = false;
       state.hasError = true;
-      state.hasLoaded = false;
+    },
+
+    [loadComments.pending]: (state, action) => {
+      console.log('comments pending');
+      state.posts[action.meta.arg.index].isLoadingComments = true;
+      state.posts[action.meta.arg.index].showComments = false;
+      state.posts[action.meta.arg.index].errorComment = false;
+    },
+    [loadComments.fulfilled]: (state, action) => {
+      console.log('comments fulfilled');
+      state.posts[action.meta.arg.index].isLoadingComments = false;
+      state.posts[action.meta.arg.index].showComments = true;
+      state.posts[action.payload.index].comments = action.payload.comments;
+      state.posts[action.meta.arg.index].errorComment = false;
+    },
+    [loadComments.rejected]: (state, action) => {
+      console.log('comments error:', action.error.message);
+      state.posts[action.meta.arg.index].isLoadingComments = false;
+      state.posts[action.meta.arg.index].showComments = false;
+      state.posts[action.meta.arg.index].errorComment = true;
     },
   },
 });
@@ -45,7 +77,7 @@ export const postFeedSlice = createSlice({
 //selectors
 export const selectIsLoading = state => state.postFeed.isLoading;
 export const selectHasError = state => state.postFeed.hasError;
-export const selectPosts = state => state.postFeed.posts;
+export const selectSubreddit = state => state.postFeed;
 
 //reducer
 export default postFeedSlice.reducer;

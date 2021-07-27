@@ -1,0 +1,42 @@
+.comment {
+    padding: 0.5em 0 0 1em;
+    margin: 0;
+    align-self: flex-start;
+}
+
+.head {
+    display: flex;  
+    align-items: center;
+}
+.head h4 {
+    margin: 0;
+}
+
+.avatar {
+    margin-right: 0.4rem;
+    width: 2em;
+    height: 2em;
+    border-radius: 50%;
+    padding: 0.2em;
+}
+
+.timeStamp {
+    color: #9FA9B7;
+    font-weight: 400;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+}
+
+.body {
+    margin-left: 0.9em;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 0.2em;
+    padding-bottom: 0;
+    padding-left: 1.3em;
+    border-left: 0.15em solid #9FA9B7;
+}

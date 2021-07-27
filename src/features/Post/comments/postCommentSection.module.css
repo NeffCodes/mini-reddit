@@ -1,0 +1,26 @@
+* {
+    box-sizing: border-box;
+}
+.comments {
+    border-top: 1px solid #51637d;
+    color: #51637d;
+    margin-top: 2%;
+} 
+
+.button {
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    font-family: inherit;
+    font-weight: 700;
+    color: #51637d;
+    padding: 1.5em 1em 0 0;
+}
+.button:hover{
+    text-decoration: underline;
+}
+
+.showMoreLess {
+    display: flex;
+    justify-content: space-around;
+}
