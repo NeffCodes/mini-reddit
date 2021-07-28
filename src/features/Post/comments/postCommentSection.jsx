@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { FaComments } from 'react-icons/fa';
+import { FaComments, FaReddit } from 'react-icons/fa';
+import { VscLoading } from 'react-icons/vsc';
 import { loadComments } from '../postFeedSlice';
-import commentStyles from './postComments.module.css';
+import commentStyles from './postCommentSection.module.css';
 import Comment from '../../Comments/Comments';
 
 export const PostCommentSection = ({ content, i }) => {
@@ -80,9 +81,20 @@ export const PostCommentSection = ({ content, i }) => {
           {numComments(postData.num_comments)}
         </button>
       )}
-
       {content.showComments && <div>{numComments(postData.num_comments)}</div>}
 
+      {/*Displays loading screen while pulling comments*/}
+      {content.isLoadingComments && (
+        <div className={commentStyles.loading}>
+          <div className={commentStyles.loadingIcons}>
+            <VscLoading size={42} className={commentStyles.loadingCircle} />
+            <FaReddit size={20} className={commentStyles.loadingReddit} />
+          </div>
+          <div>Loading Comments</div>
+        </div>
+      )}
+
+      {/*Displays loaded comments*/}
       {content.showComments && postData.num_comments > 0 && (
         <div>
           {commentList(shownComments)}
