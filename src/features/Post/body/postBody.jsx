@@ -15,9 +15,7 @@ export const PostBody = ({ content, i }) => {
   return (
     <div>
       <div>
-        <h3 className={bodyStyles.title}>
-          {i + ': ' + fixedString(postData.title)}
-        </h3>
+        <h3 className={bodyStyles.title}>{fixedString(postData.title)}</h3>
 
         {/*Displays secondary text if provided*/}
         {displaySubText(postData) && (

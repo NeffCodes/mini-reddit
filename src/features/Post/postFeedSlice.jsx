@@ -23,7 +23,6 @@ export const postFeedSlice = createSlice({
     posts: [],
     isLoading: false,
     hasError: false,
-    selectedSub: 'hot',
   },
   reducers: {},
   extraReducers: {
@@ -77,7 +76,8 @@ export const postFeedSlice = createSlice({
 //selectors
 export const selectIsLoading = state => state.postFeed.isLoading;
 export const selectHasError = state => state.postFeed.hasError;
+export const selectPostList = state => state.postFeed.posts;
 export const selectSubreddit = state => state.postFeed;
 
-//reducer
+//action creators & reducer
 export default postFeedSlice.reducer;
