@@ -1,5 +1,7 @@
 import React from 'react';
 
+import ReactMarkdown from 'react-markdown';
+
 import { fixedString } from '../../../utils/fixString';
 import { ImLink } from 'react-icons/im';
 import bodyStyles from './postBody.module.css';
@@ -20,7 +22,7 @@ export const PostBody = ({ content, i }) => {
         {/*Displays secondary text if provided*/}
         {displaySubText(postData) && (
           <p className={bodyStyles.selftext}>
-            {fixedString(postData.selftext)}
+            <ReactMarkdown children={postData.selftext} />
           </p>
         )}
 
