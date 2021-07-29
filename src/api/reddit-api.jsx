@@ -1,8 +1,11 @@
 const url = 'https://www.reddit.com';
 
-//Post Feed Pull
-export const fetchRedditPosts = async subreddit => {
-  const endpoint = `${url}/${subreddit}.json`;
+//Post Filter Feed Pull
+export const fetchSubFilter = async (subreddit, filter) => {
+  const endpoint =
+    subreddit !== filter
+      ? `${url}/${subreddit}${filter}.json`
+      : `${url}/${filter}.json`;
   const response = await fetch(endpoint);
   const json = await response.json();
   return json.data.children;

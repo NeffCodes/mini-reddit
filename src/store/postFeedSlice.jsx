@@ -1,14 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { fetchRedditPosts, fetchPostComments } from '../api/reddit-api';
+import { fetchPostComments, fetchSubFilter } from '../api/reddit-api';
 
-export const fetchPosts = createAsyncThunk(
-  'postFeed/fetchPosts',
-  async subreddit => {
-    const response = await fetchRedditPosts(subreddit);
-    return response;
-  },
-);
-
+//Thunks
 export const loadComments = createAsyncThunk(
   'postFeed/loadComments',
   async ({ index, permalink }) => {
@@ -17,13 +10,37 @@ export const loadComments = createAsyncThunk(
   },
 );
 
+//--Filter Thunks
+export const loadHotPosts = createAsyncThunk(
+  'postFeed/loadHotPosts',
+  async subreddit => {
+    const response = await fetchSubFilter(subreddit, 'hot');
+    return response;
+  },
+);
+export const loadNewPosts = createAsyncThunk(
+  'postFeed/loadNewPosts',
+  async subreddit => {
+    const response = await fetchSubFilter(subreddit, 'new');
+    return response;
+  },
+);
+export const loadTopPosts = createAsyncThunk(
+  'postFeed/loadTopPosts',
+  async subreddit => {
+    const response = await fetchSubFilter(subreddit, 'top');
+    return response;
+  },
+);
+
+//Slice
 export const postFeedSlice = createSlice({
   name: 'postFeed',
   initialState: {
     posts: [],
     isLoading: false,
     hasError: false,
-    currentSubreddit: 'hot',
+    currentSubreddit: '',
     searchTerm: '',
   },
   reducers: {
@@ -33,31 +50,6 @@ export const postFeedSlice = createSlice({
     },
   },
   extraReducers: {
-    [fetchPosts.pending]: state => {
-      console.log('pending');
-      state.isLoading = true;
-      state.hasError = false;
-    },
-    [fetchPosts.fulfilled]: (state, action) => {
-      console.log('fulfilled');
-      state.isLoading = false;
-      state.hasError = false;
-      state.posts = action.payload;
-      state.posts.forEach((post, i) => {
-        post.index = i;
-        post.comments = [];
-        post.showComments = false;
-        post.isLoadingComments = false;
-        post.errorComment = false;
-        return post;
-      });
-    },
-    [fetchPosts.rejected]: (state, action) => {
-      console.log('error:', action.error.message);
-      state.isLoading = false;
-      state.hasError = true;
-    },
-
     [loadComments.pending]: (state, action) => {
       console.log('comments pending');
       state.posts[action.meta.arg.index].isLoadingComments = true;
@@ -76,6 +68,84 @@ export const postFeedSlice = createSlice({
       state.posts[action.meta.arg.index].isLoadingComments = false;
       state.posts[action.meta.arg.index].showComments = false;
       state.posts[action.meta.arg.index].errorComment = true;
+    },
+
+    [loadHotPosts.pending]: state => {
+      console.log('pending');
+      state.isLoading = true;
+      state.hasError = false;
+      state.posts = [];
+    },
+    [loadHotPosts.fulfilled]: (state, action) => {
+      console.log('fulfilled');
+      state.isLoading = false;
+      state.hasError = false;
+      state.posts = action.payload;
+      state.posts.forEach((post, i) => {
+        post.index = i;
+        post.comments = [];
+        post.showComments = false;
+        post.isLoadingComments = false;
+        post.errorComment = false;
+        return post;
+      });
+    },
+    [loadHotPosts.rejected]: (state, action) => {
+      console.log('error:', action.error.message);
+      state.isLoading = false;
+      state.hasError = true;
+    },
+
+    [loadNewPosts.pending]: state => {
+      console.log('pending');
+      state.isLoading = true;
+      state.hasError = false;
+      state.posts = [];
+    },
+    [loadNewPosts.fulfilled]: (state, action) => {
+      console.log('fulfilled');
+      state.isLoading = false;
+      state.hasError = false;
+      state.posts = action.payload;
+      state.posts.forEach((post, i) => {
+        post.index = i;
+        post.comments = [];
+        post.showComments = false;
+        post.isLoadingComments = false;
+        post.errorComment = false;
+        return post;
+      });
+    },
+    [loadNewPosts.rejected]: (state, action) => {
+      console.log('error:', action.error.message);
+      state.isLoading = false;
+      state.hasError = true;
+    },
+
+    [loadTopPosts.pending]: state => {
+      console.log('pending');
+      state.isLoading = true;
+      state.hasError = false;
+      state.posts = [];
+    },
+    [loadTopPosts.fulfilled]: (state, action) => {
+      console.log('fulfilled');
+      state.isLoading = false;
+      state.hasError = false;
+      state.posts = action.payload;
+      state.posts.forEach((post, i) => {
+        post.index = i;
+        post.comments = [];
+        post.showComments = false;
+        post.isLoadingComments = false;
+        post.errorComment = false;
+        return post;
+      });
+    },
+    [loadTopPosts.rejected]: (state, action) => {
+      console.log('error:', action.error.message);
+      state.isLoading = false;
+      state.hasError = true;
     },
   },
 });
