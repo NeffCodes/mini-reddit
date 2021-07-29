@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 
 import { FaComments, FaReddit } from 'react-icons/fa';
 import { VscLoading } from 'react-icons/vsc';
-import { loadComments } from '../postFeedSlice';
+import { loadComments } from '../../../store/postFeedSlice';
 import commentStyles from './postCommentSection.module.css';
 import Comment from '../../Comments/Comments';
 

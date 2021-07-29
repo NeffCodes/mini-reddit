@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
-import postFeedReducer from '../features/Post/postFeedSlice';
-import subredditListReducer from '../features/Subreddits/AsideSubredditSlice';
+import postFeedReducer from './postFeedSlice';
+import subredditListReducer from './AsideSubredditSlice';
 
 export const store = configureStore({
   reducer: {

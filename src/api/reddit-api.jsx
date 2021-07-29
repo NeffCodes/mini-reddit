@@ -34,7 +34,7 @@ export const fetchAsideList = async () => {
   const endpoint = `${url}/subreddits.json`;
   const response = await fetch(endpoint);
   const json = await response.json();
-  console.log('json', json)
+  console.log('json', json);
   return json.data.children.map(sub => {
     return {
       name: sub.data.display_name,

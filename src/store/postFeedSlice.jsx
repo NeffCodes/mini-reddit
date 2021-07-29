@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { fetchRedditPosts, fetchPostComments } from '../../api/reddit-api';
+import { fetchRedditPosts, fetchPostComments } from '../api/reddit-api';
 
 export const fetchPosts = createAsyncThunk(
   'postFeed/fetchPosts',
@@ -23,14 +23,14 @@ export const postFeedSlice = createSlice({
     posts: [],
     isLoading: false,
     hasError: false,
-    selectedSubreddit: '',
+    currentSubreddit: 'hot',
     searchTerm: '',
   },
   reducers: {
-    setSelectedSubreddit: (state, action) => {
-      state.selectedSubreddit = action.payload;
+    setCurrentSubreddit: (state, action) => {
+      state.currentSubreddit = action.payload;
       state.searchTerm = '';
-    }
+    },
   },
   extraReducers: {
     [fetchPosts.pending]: state => {
@@ -84,8 +84,8 @@ export const postFeedSlice = createSlice({
 export const selectIsLoading = state => state.postFeed.isLoading;
 export const selectHasError = state => state.postFeed.hasError;
 export const selectPostList = state => state.postFeed.posts;
-export const selectSubreddit = state => state.postFeed;
+export const selectPostFeed = state => state.postFeed;
 
 //action creators & reducer
-export const { setSelectedSubreddit } = postFeedSlice.actions;
+export const { setCurrentSubreddit } = postFeedSlice.actions;
 export default postFeedSlice.reducer;

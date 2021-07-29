@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { fetchAsideList } from '../../api/reddit-api';
+import { fetchAsideList } from '../api/reddit-api';
 
 export const loadSubreddits = createAsyncThunk('subredditList', async () => {
   const response = await fetchAsideList();

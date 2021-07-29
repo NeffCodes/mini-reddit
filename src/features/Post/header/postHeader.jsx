@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 
-import { selectIsLoading } from '../postFeedSlice';
+import { selectIsLoading } from '../../../store/postFeedSlice';
 
 import { FaReddit } from 'react-icons/fa';
 import { timeAgo } from '../../../utils/getPostTime';
