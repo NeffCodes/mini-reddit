@@ -14,12 +14,19 @@ export const PostHeader = ({ content }) => {
   const [subredditIcon, setSubredditIcon] = useState('');
 
   useEffect(() => {
+    let mounted = true;
     if (!isLoading) {
-      fetchSubredditAbout(postData.subreddit_name_prefixed).then(response =>
-        setSubredditIcon(response.icon_img),
-      );
+      fetchSubredditAbout(postData.subreddit_name_prefixed).then(response => {
+        if (mounted) {
+          setSubredditIcon(response.icon_img);
+        }
+      });
+
+      return function cleanup() {
+        mounted = false;
+      };
     }
-  });
+  }, [isLoading, postData.subreddit_name_prefixed]);
 
   const subAvatar = subreddit => {
     if (subreddit) {
