@@ -19,9 +19,9 @@ export const PostBody = ({ content, i }) => {
 
         {/*Displays secondary text if provided*/}
         {displaySubText(postData) && (
-          <p className={bodyStyles.selftext}>
+          <div className={bodyStyles.selftext}>
             <ReactMarkdown children={postData.selftext} />
-          </p>
+          </div>
         )}
 
         {/* Displays link if provided */}
