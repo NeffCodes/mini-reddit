@@ -1,32 +1,27 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectPostList } from './postFeedSlice';
-import { fetchPosts } from './postFeedSlice';
+import { selectPostFeed, loadHotPosts } from '../../store/postFeedSlice';
 
 import Post from './Post';
-
+import Filters from '../Filters/Filters';
 import './PostFeed.module.css';
 
 export const PostFeed = () => {
-  const postList = useSelector(selectPostList);
-  const [sub, setSub] = useState('');
+  const postList = useSelector(selectPostFeed);
+  const { currentSubreddit, posts } = postList;
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchPosts(sub));
-  }, [dispatch, sub]);
+    dispatch(loadHotPosts(currentSubreddit));
+  }, [dispatch, currentSubreddit]);
 
   return (
     <section>
-      <h2>Post Feed</h2>
+      <Filters />
       <ul>
-        {postList.map((post, index) => (
-          <li key={index} data-testid={post.subreddit}>
+        {posts.map((post, index) => (
+          <li key={index}>
             <Post content={post} i={index} />
-            <button onClick={() => setSub(post.data.subreddit_name_prefixed)}>
-              Change Feed
-            </button>
-            <button onClick={() => setSub('hot')}>Reset Feed</button>
           </li>
         ))}
       </ul>

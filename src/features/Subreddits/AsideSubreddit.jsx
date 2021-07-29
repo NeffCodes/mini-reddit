@@ -8,7 +8,7 @@ import {
 import { setCurrentSubreddit } from '../../store/postFeedSlice';
 
 import styles from './AsideSubreddit.module.css';
-import { FaReddit } from 'react-icons/fa';
+import { FaReddit, FaHome } from 'react-icons/fa';
 
 export const AsideSubs = () => {
   const dispatch = useDispatch();
@@ -25,9 +25,9 @@ export const AsideSubs = () => {
         <li key="sub-home">
           <button
             type="button"
-            onClick={() => dispatch(setCurrentSubreddit('hot'))}
+            onClick={() => dispatch(setCurrentSubreddit(''))}
           >
-            Home
+            <FaHome /> Home
           </button>
         </li>
 

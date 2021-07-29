@@ -55,7 +55,7 @@ export const PostBody = ({ content, i }) => {
           </div>
         )}
 
-        {/* Displays outside reddit videwo if provided */}
+        {/* Displays outside reddit video if provided */}
         {postData.post_hint === 'rich:video' && (
           <div>
             <img
