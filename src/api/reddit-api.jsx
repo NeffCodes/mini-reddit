@@ -40,6 +40,8 @@ export const fetchAsideList = async () => {
       name: sub.data.display_name,
       prefix_name: sub.data.display_name_prefixed,
       icon: sub.data.icon_img,
+      id: sub.data.id,
+      url: sub.data.url,
     };
   });
 };

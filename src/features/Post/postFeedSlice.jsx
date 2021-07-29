@@ -23,8 +23,15 @@ export const postFeedSlice = createSlice({
     posts: [],
     isLoading: false,
     hasError: false,
+    selectedSubreddit: '',
+    searchTerm: '',
   },
-  reducers: {},
+  reducers: {
+    setSelectedSubreddit: (state, action) => {
+      state.selectedSubreddit = action.payload;
+      state.searchTerm = '';
+    }
+  },
   extraReducers: {
     [fetchPosts.pending]: state => {
       console.log('pending');
@@ -80,4 +87,5 @@ export const selectPostList = state => state.postFeed.posts;
 export const selectSubreddit = state => state.postFeed;
 
 //action creators & reducer
+export const { setSelectedSubreddit } = postFeedSlice.actions;
 export default postFeedSlice.reducer;

@@ -22,7 +22,6 @@ const subredditListSlice = createSlice({
     },
     [loadSubreddits.fulfilled]: (state, action) => {
       console.log('aside fulfilled');
-      console.log('aside', action)
       state.isLoading = false;
       state.hasError = false;
       state.subreddits = action.payload;
