@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
-import { selectIsLoading } from '../../../store/postFeedSlice';
+import {
+  selectIsLoading,
+  setCurrentSubreddit,
+} from '../../../store/postFeedSlice';
 
 import { FaReddit } from 'react-icons/fa';
 import { timeAgo } from '../../../utils/getPostTime';
@@ -12,6 +15,7 @@ export const PostHeader = ({ content }) => {
   const postData = content.data;
   const isLoading = useSelector(selectIsLoading);
   const [subredditIcon, setSubredditIcon] = useState('');
+  const dispatch = useDispatch();
 
   useEffect(() => {
     let mounted = true;
@@ -45,9 +49,16 @@ export const PostHeader = ({ content }) => {
     <div className={headStyles.header}>
       {subAvatar(subredditIcon)}
       <div className={headStyles.details}>
-        <span className={headStyles.detailsSubreddit}>
+        <button
+          className={headStyles.detailsSubreddit}
+          onClick={() =>
+            dispatch(
+              setCurrentSubreddit(`${postData.subreddit_name_prefixed}/`),
+            )
+          }
+        >
           {postData.subreddit_name_prefixed}
-        </span>
+        </button>
         <span className={headStyles.detailsAuthor}>
           posted by u/{postData.author}
         </span>
