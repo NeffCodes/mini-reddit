@@ -20,8 +20,17 @@ export const AsideSubs = () => {
 
   return (
     <aside className={styles.container}>
-      <h2>Sub List</h2>
+      <h2>Popular Subreddits</h2>
       <ul>
+        <li key="sub-home">
+          <button
+            type="button"
+            onClick={() => dispatch(setCurrentSubreddit('hot'))}
+          >
+            Home
+          </button>
+        </li>
+
         {subreddits
           .filter(sub => sub.name !== 'Home')
           .map(sub => (
