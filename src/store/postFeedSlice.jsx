@@ -1,5 +1,9 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { fetchPostComments, fetchSubFilter } from '../api/reddit-api';
+import {
+  fetchPostComments,
+  fetchSubFilter,
+  fetchSearchResult,
+} from '../api/reddit-api';
 
 //Thunks
 export const loadComments = createAsyncThunk(
@@ -10,7 +14,14 @@ export const loadComments = createAsyncThunk(
   },
 );
 
-//--Filter Thunks
+export const loadFilteredPosts = createAsyncThunk(
+  'postFeed/loadFilteredPosts',
+  async term => {
+    const response = await fetchSearchResult(term);
+    return response;
+  },
+);
+
 export const loadHotPosts = createAsyncThunk(
   'postFeed/loadHotPosts',
   async subreddit => {
@@ -42,11 +53,19 @@ export const postFeedSlice = createSlice({
     hasError: false,
     currentSubreddit: '',
     searchTerm: '',
+    hasSearched: false,
   },
   reducers: {
     setCurrentSubreddit: (state, action) => {
       state.currentSubreddit = action.payload;
       state.searchTerm = '';
+    },
+    setSearchTerm: (state, action) => {
+      state.searchTerm = action.payload;
+    },
+    clearSearchTerm: state => {
+      state.searchTerm = '';
+      state.hasSearched = false;
     },
   },
   extraReducers: {
@@ -147,6 +166,34 @@ export const postFeedSlice = createSlice({
       state.isLoading = false;
       state.hasError = true;
     },
+
+    [loadFilteredPosts.pending]: state => {
+      console.log('pending');
+      state.isLoading = true;
+      state.hasError = false;
+      state.hasSearched = true;
+      state.posts = [];
+    },
+    [loadFilteredPosts.fulfilled]: (state, action) => {
+      console.log('fulfilled');
+      state.isLoading = false;
+      state.hasError = false;
+      state.hasSearched = true;
+      state.posts = action.payload;
+      state.posts.forEach((post, i) => {
+        post.index = i;
+        post.comments = [];
+        post.showComments = false;
+        post.isLoadingComments = false;
+        post.errorComment = false;
+        return post;
+      });
+    },
+    [loadFilteredPosts.rejected]: (state, action) => {
+      console.log('error:', action.error.message);
+      state.isLoading = false;
+      state.hasError = true;
+    },
   },
 });
 
@@ -154,8 +201,10 @@ export const postFeedSlice = createSlice({
 export const selectIsLoading = state => state.postFeed.isLoading;
 export const selectHasError = state => state.postFeed.hasError;
 export const selectPostList = state => state.postFeed.posts;
-export const selectPostFeed = state => state.postFeed;
 
+export const selectPostFeed = state => state.postFeed;
+export const selectSearchTerm = state => state.postFeed.searchTerm;
 //action creators & reducer
-export const { setCurrentSubreddit } = postFeedSlice.actions;
+export const { setCurrentSubreddit, clearSearchTerm, setSearchTerm } =
+  postFeedSlice.actions;
 export default postFeedSlice.reducer;

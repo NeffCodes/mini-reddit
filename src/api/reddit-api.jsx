@@ -32,12 +32,19 @@ export const fetchUserAvatar = async user => {
   return json.data;
 };
 
+//Search Pull
+export const fetchSearchResult = async term => {
+  const endpoint = `${url}/search.json?q=${term}`;
+  const response = await fetch(endpoint);
+  const json = await response.json();
+  return json.data.children;
+};
+
 //Aside Pull
 export const fetchAsideList = async () => {
   const endpoint = `${url}/subreddits.json`;
   const response = await fetch(endpoint);
   const json = await response.json();
-  console.log('json', json);
   return json.data.children.map(sub => {
     return {
       name: sub.data.display_name,
