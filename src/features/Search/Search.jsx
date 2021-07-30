@@ -8,6 +8,7 @@ import {
 } from '../../store/postFeedSlice';
 
 import { FaSearch, FaTimesCircle } from 'react-icons/fa';
+import styles from './Search.module.css';
 
 export const Search = () => {
   const searchTerm = useSelector(selectSearchTerm);
@@ -31,8 +32,13 @@ export const Search = () => {
   };
 
   return (
-    <form id="search" role="search" onSubmit={handleSubmit}>
-      <div>
+    <form
+      id="search"
+      role="search"
+      onSubmit={handleSubmit}
+      className={styles.form}
+    >
+      <div className={styles.searchContainer}>
         <input
           type="search"
           id="search-input"
@@ -41,21 +47,28 @@ export const Search = () => {
           onChange={onSearchTermChange}
           spellCheck="false"
           autoComplete="false"
-          placeholder="Search"
+          placeholder="e.g. puppies"
+          className={styles.input}
         />
         {searchTerm.length > 0 && (
           <button
             type="button"
             onClick={handleClearInput}
             aria-label="Clear Input."
-            data-testid="search-clear-button"
+            className={styles.clear}
           >
-            <FaTimesCircle />
+            <FaTimesCircle className={styles.clearIcon} />
           </button>
         )}
       </div>
-      <button onClick={handleSubmit}>
-        <FaSearch /> Search
+      <button
+        type="button"
+        onClick={handleSubmit}
+        aria-label="Search Input."
+        className={styles.submit}
+      >
+        <FaSearch className={styles.submitIcon} />
+        Search
       </button>
     </form>
   );

@@ -1,0 +1,78 @@
+.form {
+    display: flex;
+    width: 80%;
+}
+.searchContainer {
+    position: relative;
+    width: 100%;
+    display: flex;
+}
+.input{
+    width: 100%;
+    font-size: 1.4rem;
+    padding: .5rem .25rem .5rem 1.5rem;
+    border: 0.2rem solid var(--dark-color);
+    border-radius: 3rem 0 0 3rem;
+    color: var(--dark-color);
+}
+.clear{
+    position: absolute;
+    cursor: pointer;
+    top: 55%;
+    right: 1rem;
+    transform: translateY(-50%);
+}
+.clearIcon{
+    width: 2rem;
+    height: 2rem;
+    color: var(--dark-color-tint3);
+}
+.clearIcon:hover, .clearIcon:focus, .clearIcon:active {
+    color: var(--dark-color);
+}
+.submit {
+    background-color: var(--dark-color);
+    color: var(--light-color);
+    border-radius: 0 3rem 3rem 0;
+    padding: .5rem 1.5rem .5rem .25rem;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.4rem;
+}
+.submit:hover, .submit:focus{
+    background-color: var(--secondary-color);
+    transform: translateY(-0.1rem);
+    filter: drop-shadow(0 .1rem 0 var(--dark-color));
+    transition: all .1s ease;
+}
+.submit:active {
+    background-color: var(--dark-color);
+    transform: translateY(0);
+    transition: all .1s ease;
+}
+.submitIcon {
+    width: 1.4rem;
+    height: 1.4rem;
+    margin: 0.5rem;
+}
+
+@media screen and (min-width:768px)  {
+    .input {
+        font-size: 1.8rem;
+        padding: .75rem .5rem .75rem 1.5rem;
+    }
+    .form{
+        width: 60%;
+    }
+    .submit {
+        font-size: 1.8rem;
+        padding: .3rem 1.5rem .3rem .5rem;
+    }
+    .submitIcon {
+        width: 1.8rem;
+        height: 1.8rem;
+        margin: 0.5rem;
+    }
+}
