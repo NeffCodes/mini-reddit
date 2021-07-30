@@ -25,7 +25,9 @@ export const Search = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    dispatch(loadFilteredPosts(searchTerm));
+    if (searchTerm.trim('')) {
+      dispatch(loadFilteredPosts(searchTerm));
+    }
   };
 
   return (
