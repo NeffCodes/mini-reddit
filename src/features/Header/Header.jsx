@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaReddit } from 'react-icons/fa';
+import { FaReddit, FaGithub } from 'react-icons/fa';
 
 import Search from '../Search/Search';
 
@@ -8,8 +8,16 @@ import styles from './Header.module.css';
 export const Header = () => {
   return (
     <header className={styles.head}>
-      <FaReddit />
+      <div className={styles.logo}>
+        <FaReddit className={styles.icon} />
+        <span>Mini Reddit</span>
+      </div>
+
       <Search />
+
+      <a href="https://github.com/persigio/mini-reddit" className={styles.link}>
+        <FaGithub className={styles.icon} />
+      </a>
     </header>
   );
 };
