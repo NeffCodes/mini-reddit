@@ -52,6 +52,7 @@ export const postFeedSlice = createSlice({
     isLoading: false,
     hasError: false,
     currentSubreddit: '',
+    currentFilter: 'hot',
     searchTerm: '',
     hasSearched: false,
   },
@@ -99,6 +100,7 @@ export const postFeedSlice = createSlice({
       console.log('fulfilled');
       state.isLoading = false;
       state.hasError = false;
+      state.currentFilter = 'hot';
       state.posts = action.payload;
       state.posts.forEach((post, i) => {
         post.index = i;
@@ -125,6 +127,7 @@ export const postFeedSlice = createSlice({
       console.log('fulfilled');
       state.isLoading = false;
       state.hasError = false;
+      state.currentFilter = 'new';
       state.posts = action.payload;
       state.posts.forEach((post, i) => {
         post.index = i;
@@ -151,6 +154,7 @@ export const postFeedSlice = createSlice({
       console.log('fulfilled');
       state.isLoading = false;
       state.hasError = false;
+      state.currentFilter = 'top';
       state.posts = action.payload;
       state.posts.forEach((post, i) => {
         post.index = i;

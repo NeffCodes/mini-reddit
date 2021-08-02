@@ -1,0 +1,33 @@
+.container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 3%;
+}
+
+.button{
+    color: var(--dark-color-tint2);
+    border: 0.2rem solid var(--dark-color-tint2);
+    border-radius: 3rem;
+    padding: 0.5rem 1.5rem;
+    font-size: 1.4rem;
+    display: flex;
+    align-items: center;
+    margin: 0 0.5rem;
+    flex: 0 1 auto;
+}
+.button svg {
+    width: inherit;
+    height: 1.4rem;
+    margin-right: 0.2rem;
+}
+
+.selected {
+    color: var(--light-color);
+    background-color: var(--dark-color);
+    border-color: var(--dark-color);
+}
+
+@media screen and (min-width:768px)  {
+
+}

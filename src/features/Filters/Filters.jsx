@@ -14,18 +14,25 @@ import { FaSeedling } from 'react-icons/fa';
 import { AiFillFire } from 'react-icons/ai';
 import { RiBarChart2Fill } from 'react-icons/ri';
 
+import styles from './Filters.module.css';
+
 export const Filters = () => {
   const dispatch = useDispatch();
   const postList = useSelector(selectPostFeed);
-  const { currentSubreddit } = postList;
+  const { currentSubreddit, currentFilter } = postList;
 
   return (
     <nav>
       <Card>
-        <ul>
+        <ul className={styles.container}>
           <li key="filter-hot">
             <button
               type="button"
+              className={
+                currentFilter === 'hot'
+                  ? `${styles.button} ${styles.selected}`
+                  : styles.button
+              }
               onClick={() => dispatch(loadHotPosts(currentSubreddit))}
             >
               <AiFillFire /> Hot
@@ -34,6 +41,11 @@ export const Filters = () => {
           <li key="filter-new">
             <button
               type="button"
+              className={
+                currentFilter === 'new'
+                  ? `${styles.button} ${styles.selected}`
+                  : styles.button
+              }
               onClick={() => dispatch(loadNewPosts(currentSubreddit))}
             >
               <FaSeedling /> New
@@ -42,6 +54,11 @@ export const Filters = () => {
           <li key="filter-top">
             <button
               type="button"
+              className={
+                currentFilter === 'top'
+                  ? `${styles.button} ${styles.selected}`
+                  : styles.button
+              }
               onClick={() => dispatch(loadTopPosts(currentSubreddit))}
             >
               <RiBarChart2Fill /> Top
