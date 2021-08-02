@@ -17,18 +17,17 @@ export const AsideSubs = props => {
   const subreddits = useSelector(selectSubreddits);
   const [showList, setShowList] = useState(false);
 
-  console.log('window', width);
-
   useEffect(() => {
     dispatch(loadSubreddits());
   }, [dispatch]);
 
   const subredditList = () => {
     return (
-      <ul>
+      <ul className={styles.subList}>
         <li key="sub-home">
           <button
             type="button"
+            className={styles.subItem}
             onClick={() => {
               setShowList(false);
               dispatch(setCurrentSubreddit(''));
@@ -44,6 +43,7 @@ export const AsideSubs = props => {
             <li key={sub.id}>
               <button
                 type="button"
+                className={styles.subItem}
                 onClick={() => {
                   setShowList(false);
                   dispatch(setCurrentSubreddit(sub.url));
@@ -64,17 +64,19 @@ export const AsideSubs = props => {
           ))}
       </ul>
     );
-  }
+  };
 
-  if(width <= 768){
+  if (width <= 768) {
     return (
       <aside className={props.className}>
         <Card>
           <button
+            type="button"
+            className={styles.showButton}
             onClick={() => (showList ? setShowList(false) : setShowList(true))}
           >
             Popular Subreddits
-            {showList ? <FaChevronDown /> : <FaChevronUp />}
+            {showList ? <FaChevronUp /> : <FaChevronDown />}
           </button>
           {showList && subredditList()}
         </Card>
@@ -85,7 +87,7 @@ export const AsideSubs = props => {
   return (
     <aside className={props.className}>
       <Card>
-        <span>Popular Subreddits</span>
+        <h2 className={styles.subtitle}>Popular Subreddits</h2>
         {subredditList()}
       </Card>
     </aside>
