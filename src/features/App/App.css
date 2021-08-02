@@ -1,20 +1,27 @@
 main{
-  display: grid;
-  column-gap: 1rem;
-  grid-template-columns: 3fr 1fr;
-  grid-template-areas: "list side";
+  display: flex;
+  flex-direction: column;
   padding: 0 1.2rem;
   margin-top: 7rem;
 }
-.list {
-  grid-area: list;
-}
-.side {
-  grid-area: side;
+.side{
+  order: -1;
+  overflow: hidden;
 }
 
 @media screen and (min-width:768px)  {
   main{
+    display: grid;
+    column-gap: 1rem;
+    grid-template-columns: 3fr 1fr;
+    grid-template-areas: "list side";
     padding: 0 2.4rem;
+  }
+  .list {
+    grid-area: list;
+  }
+  .side {
+    grid-area: side;
+    order: 2;
   }
 }

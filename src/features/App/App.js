@@ -10,8 +10,8 @@ function App() {
     <>
       <Header />
       <main>
-        <PostFeed className="list" />
-        <AsideSubs className="side" />
+        <PostFeed className= 'list' />
+        <AsideSubs className= 'side' />
       </main>
     </>
   );
