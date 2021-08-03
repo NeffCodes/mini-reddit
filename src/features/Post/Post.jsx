@@ -1,16 +1,16 @@
 import React from 'react';
 
 import Card from '../../components/Card/Card';
-import { PostHeader } from './header/postHeader';
-import { PostBody } from './body/postBody';
-import { PostCommentSection } from './comments/postCommentSection';
+import { PostHeader } from './_postHeaderSection/postHeaderSection';
+import { PostBody } from './_postBodySection/postBody';
+import { PostCommentSection } from './_postCommentSection/postCommentSection';
 
 export const Post = ({ content, i }) => {
   return (
     <Card>
       <PostHeader content={content} />
-      <PostBody content={content} i={i} />
-      <PostCommentSection content={content} i={i} />
+      {/* <PostBody content={content} i={i} />
+      <PostCommentSection content={content} i={i} /> */}
     </Card>
   );
 };

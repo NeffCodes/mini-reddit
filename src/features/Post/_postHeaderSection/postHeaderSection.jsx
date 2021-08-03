@@ -9,10 +9,9 @@ import {
 import { FaReddit } from 'react-icons/fa';
 import { timeAgo } from '../../../utils/getPostTime';
 import { fetchSubredditAbout } from '../../../api/reddit-api';
-import headStyles from './postHeader.module.css';
+import headStyles from './postHeaderSection.module.css';
 
 export const PostHeader = ({ content }) => {
-  const postData = content.data;
   const isLoading = useSelector(selectIsLoading);
   const [subredditIcon, setSubredditIcon] = useState('');
   const dispatch = useDispatch();
@@ -20,7 +19,7 @@ export const PostHeader = ({ content }) => {
   useEffect(() => {
     let mounted = true;
     if (!isLoading) {
-      fetchSubredditAbout(postData.subreddit_name_prefixed).then(response => {
+      fetchSubredditAbout(content.prefix_name).then(response => {
         if (mounted) {
           setSubredditIcon(response.icon_img);
         }
@@ -30,7 +29,7 @@ export const PostHeader = ({ content }) => {
         mounted = false;
       };
     }
-  }, [isLoading, postData.subreddit_name_prefixed]);
+  }, [isLoading, content.prefix_name]);
 
   const subAvatar = subreddit => {
     if (subreddit) {
@@ -52,20 +51,16 @@ export const PostHeader = ({ content }) => {
         <button
           className={headStyles.detailsSubreddit}
           onClick={() =>
-            dispatch(
-              setCurrentSubreddit(`${postData.subreddit_name_prefixed}/`),
-            )
+            dispatch(setCurrentSubreddit(`${content.prefix_name}/`))
           }
         >
-          {postData.subreddit_name_prefixed}
+          {content.prefix_name}
         </button>
         <span className={headStyles.detailsAuthor}>
-          posted by u/{postData.author}
+          posted by u/{content.author}
         </span>
       </div>
-      <div className={headStyles.timeStamp}>
-        {timeAgo(postData.created_utc)}
-      </div>
+      <div className={headStyles.timeStamp}>{timeAgo(content.time)}</div>
     </div>
   );
 };
