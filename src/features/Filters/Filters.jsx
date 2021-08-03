@@ -33,7 +33,11 @@ export const Filters = () => {
                   ? `${styles.button} ${styles.selected}`
                   : styles.button
               }
-              onClick={() => dispatch(loadHotPosts(currentSubreddit))}
+              onClick={() => {
+                if (currentFilter !== 'hot') {
+                  dispatch(loadHotPosts(currentSubreddit));
+                }
+              }}
             >
               <AiFillFire /> Hot
             </button>
@@ -46,7 +50,11 @@ export const Filters = () => {
                   ? `${styles.button} ${styles.selected}`
                   : styles.button
               }
-              onClick={() => dispatch(loadNewPosts(currentSubreddit))}
+              onClick={() => {
+                if (currentFilter !== 'new') {
+                  dispatch(loadNewPosts(currentSubreddit));
+                }
+              }}
             >
               <FaSeedling /> New
             </button>
@@ -59,7 +67,11 @@ export const Filters = () => {
                   ? `${styles.button} ${styles.selected}`
                   : styles.button
               }
-              onClick={() => dispatch(loadTopPosts(currentSubreddit))}
+              onClick={() => {
+                if (currentFilter !== 'top') {
+                  dispatch(loadTopPosts(currentSubreddit));
+                }
+              }}
             >
               <RiBarChart2Fill /> Top
             </button>

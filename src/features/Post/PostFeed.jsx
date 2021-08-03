@@ -10,7 +10,7 @@ import Post from './Post';
 import Filters from '../Filters/Filters';
 import './PostFeed.module.css';
 
-export const PostFeed = () => {
+export const PostFeed = props => {
   const postList = useSelector(selectPostFeed);
   const { currentSubreddit, posts, isLoading, searchTerm, hasSearched } =
     postList;
@@ -27,7 +27,7 @@ export const PostFeed = () => {
 
   if (isLoading) {
     return (
-      <section>
+      <section className={props.className}>
         <Filters />
         <span>Loading Feed</span>
       </section>
@@ -35,12 +35,12 @@ export const PostFeed = () => {
   }
 
   if (!isLoading && posts.length === 0) {
-    return <section>failed to find any</section>;
+    return <section className={props.className}>failed to find any</section>;
   }
 
   if (!isLoading && hasSearched) {
     return (
-      <section>
+      <section className={props.className}>
         <span>You searched: {searchTerm}</span>
         <button onClick={handleClick}> Return </button>
         <ul>
@@ -55,7 +55,7 @@ export const PostFeed = () => {
   }
 
   return (
-    <section>
+    <section className={props.className}>
       <Filters />
       <ul>
         {posts.map((post, index) => (

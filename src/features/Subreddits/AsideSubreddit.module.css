@@ -11,7 +11,7 @@
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    font-size: 1.4rem;
+    font-size: 1.6rem;
     padding: 1rem;
 }
 .subtitle{
@@ -20,8 +20,8 @@
     font-size: 1.8rem;
 }
 .showButton svg {
-    width: 1.4rem;
-    height: 1.4rem;
+    width: 1.6rem;
+    height: 1.6rem;
 }
 
 .subList {
@@ -30,7 +30,7 @@
 }
 
 .subItem {
-    font-size: 1.4rem;
+    font-size: 1.6rem;
     display: flex;
     align-items: center;
     padding: 1rem;
