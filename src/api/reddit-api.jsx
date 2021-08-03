@@ -8,7 +8,24 @@ export const fetchSubFilter = async (subreddit, filter) => {
       : `${url}/${filter}.json?limit=100`;
   const response = await fetch(endpoint);
   const json = await response.json();
-  return json.data.children;
+  console.log(json.data.children)
+  return json.data.children.map(sub => {
+    return {
+      name: sub.data.subreddit,
+      prefix_name: sub.data.subreddit_name_prefixed,
+      icon: sub.data.icon_img,
+      id: sub.data.id,
+      url: sub.data.url,
+      permalink: sub.data.permalink,
+      time: sub.data.created_utc,
+      author: sub.data.author,
+      comment_count: sub.data.num_comments,
+      nsfw: sub.data.over_18,
+      spoiler: sub.data.spoiler,
+      title: sub.data.title,
+      body: sub.data.selftext,
+    };
+  });;
 };
 
 export const fetchSubredditAbout = async subreddit => {

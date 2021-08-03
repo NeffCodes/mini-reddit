@@ -45,7 +45,7 @@ export const PostFeed = props => {
         <button onClick={handleClick}> Return </button>
         <ul>
           {posts.map((post, index) => (
-            <li key={index}>
+            <li key={post.id}>
               <Post content={post} i={index} />
             </li>
           ))}
@@ -59,7 +59,7 @@ export const PostFeed = props => {
       <Filters />
       <ul>
         {posts.map((post, index) => (
-          <li key={index}>
+          <li key={post.id}>
             <Post content={post} i={index} />
           </li>
         ))}
