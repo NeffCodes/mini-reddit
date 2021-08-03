@@ -4,8 +4,8 @@ const url = 'https://www.reddit.com';
 export const fetchSubFilter = async (subreddit, filter) => {
   const endpoint =
     subreddit !== filter
-      ? `${url}/${subreddit}${filter}.json`
-      : `${url}/${filter}.json`;
+      ? `${url}/${subreddit}${filter}.json?limit=100`
+      : `${url}/${filter}.json?limit=100`;
   const response = await fetch(endpoint);
   const json = await response.json();
   return json.data.children;
