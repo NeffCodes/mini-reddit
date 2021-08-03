@@ -1,7 +1,7 @@
 .comments {
-    border-top: 1px solid #51637d;
+    border-top: 2px solid var(--dark-color-tint2);
     color: #51637d;
-    margin-top: 2%;
+    padding-top: 3%;
 } 
 
 .button {
@@ -20,29 +20,4 @@
 .showMoreLess {
     display: flex;
     justify-content: space-around;
-}
-
-.loading {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: grey;
-    font-weight: bold;
-}
-
-.loadingReddit {
-    margin: 11.5px;
-}
-.loadingCircle{ 
-    position: absolute;
-    animation: rotation linear 1.3s infinite;
-    transform-origin: 50% 50%;
-}
-@keyframes rotation {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(359deg);
-  }
 }

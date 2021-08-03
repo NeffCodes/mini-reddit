@@ -1,21 +1,20 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { FaComments, FaReddit } from 'react-icons/fa';
-import { VscLoading } from 'react-icons/vsc';
+import { FaComments } from 'react-icons/fa';
 import { loadComments } from '../../../store/postFeedSlice';
 import commentStyles from './postCommentSection.module.css';
 import Comment from '../../Comments/Comments';
+import LoadingIcon from '../../../components/LoadingIcon/LoadingIcon';
 
 export const PostCommentSection = ({ content, i }) => {
   const [shownComments, setShownComments] = useState(3);
   const comments = content.comments;
-  const postData = content.data;
   const dispatch = useDispatch();
 
   const handleCommentClick = () => {
     console.log('fetching comments');
-    dispatch(loadComments({ index: i, permalink: postData.permalink }));
+    dispatch(loadComments({ index: i, permalink: content.permalink }));
   };
   const handleMoreClick = () => {
     const next = shownComments + 3;
@@ -78,24 +77,16 @@ export const PostCommentSection = ({ content, i }) => {
     <div className={commentStyles.comments}>
       {!content.showComments && (
         <button onClick={handleCommentClick} className={commentStyles.button}>
-          {numComments(postData.num_comments)}
+          {numComments(content.comment_count)}
         </button>
       )}
-      {content.showComments && <div>{numComments(postData.num_comments)}</div>}
+      {content.showComments && <div>{numComments(content.comment_count)}</div>}
 
       {/*Displays loading screen while pulling comments*/}
-      {content.isLoadingComments && (
-        <div className={commentStyles.loading}>
-          <div className={commentStyles.loadingIcons}>
-            <VscLoading size={42} className={commentStyles.loadingCircle} />
-            <FaReddit size={20} className={commentStyles.loadingReddit} />
-          </div>
-          <div>Loading Comments</div>
-        </div>
-      )}
+      {content.isLoadingComments && <LoadingIcon text='Loading Comments' />}
 
       {/*Displays loaded comments*/}
-      {content.showComments && postData.num_comments > 0 && (
+      {content.showComments && content.comment_count > 0 && (
         <div>
           {commentList(shownComments)}
           {showHideButtons()}
