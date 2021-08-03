@@ -83,7 +83,7 @@ export const PostCommentSection = ({ content, i }) => {
       {content.showComments && <div>{numComments(content.comment_count)}</div>}
 
       {/*Displays loading screen while pulling comments*/}
-      {content.isLoadingComments && <LoadingIcon text='Loading Comments' />}
+      {content.isLoadingComments && <LoadingIcon text="Loading Comments" />}
 
       {/*Displays loaded comments*/}
       {content.showComments && content.comment_count > 0 && (

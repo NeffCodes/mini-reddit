@@ -3,12 +3,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 4rem;
 }
 .text {
     font-family: 'Roboto Condensed', sans-serif;
     font-weight: bold;
     font-size: 2rem;
-    padding-left: 5px;
+    padding:0 5px;
 }
 .reddit {
     width: 20px;
