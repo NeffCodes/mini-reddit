@@ -4,7 +4,6 @@
 import React from 'react';
 
 export default function useWindowSize() {
-  console.log('w', typeof window)
   const [windowSize, setWindowSize] = React.useState({
     width: window.innerWidth,
     height: window.innerHeight,
