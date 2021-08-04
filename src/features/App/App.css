@@ -6,7 +6,6 @@ main{
 }
 .side{
   order: -1;
-  overflow: hidden;
 }
 
 @media screen and (min-width:768px)  {

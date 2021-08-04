@@ -9,7 +9,7 @@ import {
 import { FaReddit } from 'react-icons/fa';
 import { timeAgo } from '../../../utils/getPostTime';
 import { fetchSubredditAbout } from '../../../api/reddit-api';
-import headStyles from './postHeaderSection.module.css';
+import styles from './postHeaderSection.module.css';
 
 export const PostHeader = ({ content }) => {
   const isLoading = useSelector(selectIsLoading);
@@ -37,30 +37,32 @@ export const PostHeader = ({ content }) => {
         <img
           src={subreddit}
           alt="subreddits avatar"
-          className={headStyles.avatar}
+          className={styles.avatar}
         />
       );
     }
-    return <FaReddit size={42} className={headStyles.avatar} />;
+    return <FaReddit className={styles.avatar} />;
   };
 
   return (
-    <div className={headStyles.header}>
+    <div className={styles.header}>
       {subAvatar(subredditIcon)}
-      <div className={headStyles.details}>
+      <div className={styles.details}>
         <button
-          className={headStyles.detailsSubreddit}
+          className={styles.detailsSubreddit}
           onClick={() =>
             dispatch(setCurrentSubreddit(`${content.prefix_name}/`))
           }
         >
           {content.prefix_name}
         </button>
-        <span className={headStyles.detailsAuthor}>
+        <span className={styles.detailsAuthor}>
           posted by u/{content.author}
         </span>
       </div>
-      <div className={headStyles.timeStamp}>{timeAgo(content.time)}</div>
+      <div className={styles.timeStamp}>{timeAgo(content.time)}</div>
     </div>
   );
 };
+
+export default PostHeader;

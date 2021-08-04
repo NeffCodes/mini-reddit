@@ -37,3 +37,16 @@
     align-self: flex-start;
     color: var(--dark-color);
 }
+
+@media screen and (min-width:768px)  {
+    .detailsSubreddit{
+        font-size: 1.8rem;
+    }
+    .detailsAuthor, .timeStamp {
+        font-size: 1.4rem;
+    }
+    .avatar{
+        width: 36px;
+        height: 36px;
+    }
+}

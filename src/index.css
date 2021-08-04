@@ -56,4 +56,17 @@ button {
   font-weight: bold;
   color: var(--dark-color);
   background-color: transparent;
+  padding:0;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+button:hover, button:active {
+  color: var(--secondary-color);
+}
+button:hover {
+  text-decoration: underline;
+}
+button:active {
+  text-decoration: none;
 }

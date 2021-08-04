@@ -74,3 +74,9 @@
 .list{
     padding-bottom: 1rem;
 }
+
+@media screen and (min-width:768px)  {
+    .text, .button {
+        font-size: 1.4rem;
+    }
+}
