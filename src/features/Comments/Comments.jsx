@@ -5,7 +5,7 @@ import { timeAgo } from '../../utils/getPostTime';
 import { fetchUserAvatar } from '../../api/reddit-api';
 import { FaReddit, FaChevronDown, FaChevronUp } from 'react-icons/fa';
 
-import commentStyles from './Comments.module.css';
+import styles from './Comments.module.css';
 
 export const Comment = ({ data }) => {
   const [avatar, setAvatar] = useState('');
@@ -21,14 +21,10 @@ export const Comment = ({ data }) => {
   const userAvatar = user => {
     if (user) {
       return (
-        <img
-          src={user}
-          alt={`${user} avatar`}
-          className={commentStyles.avatar}
-        />
+        <img src={user} alt={`${user} avatar`} className={styles.avatar} />
       );
     }
-    return <FaReddit className={commentStyles.avatar} />;
+    return <FaReddit className={styles.avatar} />;
   };
 
   const handleShowReplies = () => {
@@ -54,25 +50,25 @@ export const Comment = ({ data }) => {
   };
 
   return (
-    <li className={commentStyles.comment}>
-      <div className={commentStyles.head}>
+    <li className={styles.comment}>
+      <div className={styles.head}>
         {userAvatar(avatar)}
-        <div>
+        <div className={styles.author}>
           {data.author}{' '}
-          <span className={commentStyles.timeStamp}>
+          <span className={styles.timeStamp}>
             {' '}
             &#8226; {timeAgo(data.created_utc)}
           </span>
         </div>
       </div>
 
-      <div className={commentStyles.container}>
-        <div className={commentStyles.body}>
+      <div className={styles.container}>
+        <div className={styles.body}>
           <ReactMarkdown children={data.body} />
           {data.replies && data.replies.data.children.length > 1 && (
             <div>
               <button onClick={handleShowReplies}>
-                {showReplies ? <FaChevronUp /> : <FaChevronDown />} Replies
+                Replies {showReplies ? <FaChevronUp className={styles.chevron}/> : <FaChevronDown className={styles.chevron}/>}
               </button>
             </div>
           )}
