@@ -9,7 +9,7 @@ import {
 import { setCurrentSubreddit } from '../../store/postFeedSlice';
 import Card from '../../components/Card/Card';
 import styles from './AsideSubreddit.module.css';
-import { FaReddit, FaChevronDown, FaChevronUp } from 'react-icons/fa';
+import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
 
 export const AsideSubs = props => {
   const dispatch = useDispatch();
@@ -33,7 +33,7 @@ export const AsideSubs = props => {
               dispatch(setCurrentSubreddit(''));
             }}
           >
-            <FaReddit className={styles.avatar} /> Front Page
+            <span className={styles.avatar}>/r</span> Front Page
           </button>
         </li>
 
@@ -56,7 +56,7 @@ export const AsideSubs = props => {
                     className={styles.avatar}
                   />
                 ) : (
-                  <FaReddit className={styles.avatar} />
+                  <span className={styles.avatar}>/r</span>
                 )}
                 {sub.prefix_name}
               </button>

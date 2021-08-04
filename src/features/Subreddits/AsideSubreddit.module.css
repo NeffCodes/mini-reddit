@@ -5,6 +5,11 @@
     border-radius: 50%;
     background-color: var(--light-color);
     transition: 0.3s;
+    border: 2px solid var(--dark-color);
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.2rem;
 }
 .showButton {
     display: flex;
@@ -36,7 +41,7 @@
     padding: 1rem;
     width: 100%;
     position: relative;
-    transition: 0.3s;
+    transition: 0.2s;
 }
 
 .subItem:hover, .subItem:focus, .subItem:active,
@@ -48,10 +53,15 @@
 
 @media screen and (min-width:768px)  {
     
-    .subItem:hover, .subItem:focus, .subItem:active,
-    .subItem:hover .avatar, .subItem:focus .avatar, .subItem:active .avatar{
+    .subItem:hover, .subItem:focus, .subItem:active {
         color: var(--secondary-color);
         background-color: var(--light-color);
+        
+    }
+    .subItem:hover .avatar, .subItem:focus .avatar, .subItem:active .avatar {
+        border-color: var(--secondary-color);
+        color: var(--light-color);
+        background-color: var(--secondary-color);
     }
 
     .subItem::after {
