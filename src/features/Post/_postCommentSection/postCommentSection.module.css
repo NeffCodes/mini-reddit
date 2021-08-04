@@ -1,23 +1,76 @@
 .comments {
     border-top: 2px solid var(--dark-color-tint2);
-    color: #51637d;
-    padding-top: 3%;
+    color: var(--dark-color);
 } 
 
 .button {
-    cursor: pointer;
-    border: none;
-    background-color: transparent;
-    font-family: inherit;
-    font-weight: 700;
-    color: #51637d;
-    padding: 1.5em 1em 0 0;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 1.2rem;
+    color: var(--dark-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem .5rem;
+    width: 100%;
+    transition: .1s;
 }
-.button:hover{
+
+.button:hover {
     text-decoration: underline;
+}
+
+.text {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 1.2rem;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.icon {
+    width: 1.8rem;
+    height: 1.8rem;
+    margin-right: .5rem;
+}
+
+.chevron {
+    width: 1.6rem;
+    height: 1.6rem; 
+    align-self: flex-end;
+    flex-grow: 0;
 }
 
 .showMoreLess {
     display: flex;
     justify-content: space-around;
+    border-top: 2px solid var(--dark-color);
+}
+
+.showMoreLess .button:hover, .showMoreLess .button:focus {
+    background-color: var(--secondary-color);
+    color: var(--light-color);
+    box-shadow: 1px 1px 2px var(--dark-color-shade1);
+    text-decoration: none;
+}
+
+
+.showMoreLess .button:active {
+    background-color: var(--dark-color);
+    box-shadow: none;
+}
+
+.showMoreLess .button + .button{
+    border-left: 2px solid var(--dark-color);
+}
+
+.showMoreLess .button:first-of-type {
+    border-bottom-left-radius: 0.5rem;
+}
+.showMoreLess .button:last-of-type {
+    border-bottom-right-radius: 0.5rem;
+}
+
+.list{
+    padding-bottom: 1rem;
 }

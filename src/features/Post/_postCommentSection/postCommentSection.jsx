@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { FaComments } from 'react-icons/fa';
+import { FaComments, FaChevronDown, FaChevronUp } from 'react-icons/fa';
+import { BiCommentMinus, BiCommentX, BiCommentAdd } from 'react-icons/bi';
 import { loadComments } from '../../../store/postFeedSlice';
-import commentStyles from './postCommentSection.module.css';
+import styles from './postCommentSection.module.css';
 import Comment from '../../Comments/Comments';
 import LoadingIcon from '../../../components/LoadingIcon/LoadingIcon';
 
@@ -13,9 +14,16 @@ export const PostCommentSection = ({ content, i }) => {
   const dispatch = useDispatch();
 
   const handleCommentClick = () => {
-    console.log('fetching comments');
-    dispatch(loadComments({ index: i, permalink: content.permalink }));
+    if (content.showComments && shownComments) {
+      setShownComments(0);
+    } else if (content.showComments && !shownComments) {
+      setShownComments(3);
+    } else if (content.comment_count) {
+      console.log('fetching comments');
+      dispatch(loadComments({ index: i, permalink: content.permalink }));
+    }
   };
+
   const handleMoreClick = () => {
     const next = shownComments + 3;
     const total = comments.length;
@@ -25,21 +33,28 @@ export const PostCommentSection = ({ content, i }) => {
     const next = shownComments - 3;
     next < 0 ? setShownComments(0) : setShownComments(next);
   };
-  const handleHideClick = () => {
-    setShownComments(0);
-  };
+  const handleHideClick = () => setShownComments(0);
 
-  const numComments = num => {
+  const numComments = () => {
+    let text = content.comment_count === 1 ? 'comment' : 'comments';
     return (
-      <span>
-        <FaComments /> {num} comments
-      </span>
+      <>
+        <div className={styles.text}>
+          <FaComments className={styles.icon} />
+          {content.comment_count} {text}
+        </div>
+        {content.showComments && shownComments ? (
+          <FaChevronUp className={styles.chevron} />
+        ) : (
+          <FaChevronDown className={styles.chevron} />
+        )}
+      </>
     );
   };
 
   const commentList = count => {
     return (
-      <ul>
+      <ul className={styles.list}>
         {comments.slice(0, count).map(comment => (
           <Comment data={comment} key={comment.id} />
         ))}
@@ -50,43 +65,34 @@ export const PostCommentSection = ({ content, i }) => {
   const showHideButtons = () => {
     if (shownComments) {
       return (
-        <div className={commentStyles.showMoreLess}>
-          <button onClick={handleMoreClick} className={commentStyles.button}>
-            show more comments
+        <div className={styles.showMoreLess}>
+          {shownComments > 3 && (
+            <button onClick={handleLessClick} className={styles.button}>
+              <BiCommentMinus className={styles.icon} /> show less
+            </button>
+          )}
+          <button onClick={handleHideClick} className={styles.button}>
+            <BiCommentX className={styles.icon} /> hide
           </button>
-          <button onClick={handleLessClick} className={commentStyles.button}>
-            show less comments
-          </button>
-          <button onClick={handleHideClick} className={commentStyles.button}>
-            hide comments
-          </button>
-        </div>
-      );
-    } else if (content.showComments) {
-      return (
-        <div className={commentStyles.showMoreLess}>
-          <button onClick={handleMoreClick} className={commentStyles.button}>
-            show comments
-          </button>
+          {comments.length > shownComments && (
+            <button onClick={handleMoreClick} className={styles.button}>
+              <BiCommentAdd className={styles.icon} /> show more
+            </button>
+          )}
         </div>
       );
     }
   };
 
   return (
-    <div className={commentStyles.comments}>
-      {!content.showComments && (
-        <button onClick={handleCommentClick} className={commentStyles.button}>
-          {numComments(content.comment_count)}
-        </button>
-      )}
-      {content.showComments && <div>{numComments(content.comment_count)}</div>}
+    <div className={styles.comments}>
+      <button onClick={handleCommentClick} className={styles.button}>
+        {numComments()}
+      </button>
 
-      {/*Displays loading screen while pulling comments*/}
       {content.isLoadingComments && <LoadingIcon text="Loading Comments" />}
 
-      {/*Displays loaded comments*/}
-      {content.showComments && content.comment_count > 0 && (
+      {content.showComments && (
         <div>
           {commentList(shownComments)}
           {showHideButtons()}
