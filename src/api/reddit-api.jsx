@@ -1,15 +1,8 @@
 const url = 'https://www.reddit.com';
 
-//Post Filter Feed Pull
-export const fetchSubFilter = async (subreddit, filter) => {
-  const endpoint =
-    subreddit !== filter
-      ? `${url}/${subreddit}${filter}.json?limit=100`
-      : `${url}/${filter}.json?limit=100`;
-  const response = await fetch(endpoint);
-  const json = await response.json();
-  console.log(json.data.children)
-  return json.data.children.map(sub => {
+//Used to clean/limit data provided from api
+const cleanData = arr => {
+  return arr.map(sub => {
     return {
       name: sub.data.subreddit,
       prefix_name: sub.data.subreddit_name_prefixed,
@@ -24,8 +17,22 @@ export const fetchSubFilter = async (subreddit, filter) => {
       spoiler: sub.data.spoiler,
       title: sub.data.title,
       body: sub.data.selftext,
+      domain: sub.data.domain,
+      post_hint: sub.data.post_hint,
+      image: sub.data.url_overridden_by_dest,
     };
-  });;
+  });
+};
+
+//Post Filter Feed Pull
+export const fetchSubFilter = async (subreddit, filter) => {
+  const endpoint =
+    subreddit !== filter
+      ? `${url}/${subreddit}${filter}.json?limit=100`
+      : `${url}/${filter}.json?limit=100`;
+  const response = await fetch(endpoint);
+  const json = await response.json();
+  return cleanData(json.data.children);
 };
 
 export const fetchSubredditAbout = async subreddit => {
@@ -54,7 +61,8 @@ export const fetchSearchResult = async term => {
   const endpoint = `${url}/search.json?q=${term}`;
   const response = await fetch(endpoint);
   const json = await response.json();
-  return json.data.children;
+  console.log(json.data.children);
+  return cleanData(json.data.children);
 };
 
 //Aside Pull
