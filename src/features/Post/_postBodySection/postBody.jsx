@@ -7,8 +7,15 @@ import { ImLink } from 'react-icons/im';
 import styles from './postBody.module.css';
 
 export const PostBody = ({ content, i }) => {
-  const displaySubText = sub => {
-    return sub.selftext && sub.thumbnail !== 'spoiler' ? true : false;
+  const initial = content.nsfw || content.spoiler;
+  const [hidePost, setHidePost] = useState(initial);
+  const [shrinkContent, setShrinkContent] = useState(false);
+
+  const handleHidePostClick = () =>
+    hidePost ? setHidePost(false) : setHidePost(true);
+
+  const handleShrinkClick = () => {
+    shrinkContent ? setShrinkContent(false) : setShrinkContent(true);
   };
 
   return (
@@ -16,17 +23,22 @@ export const PostBody = ({ content, i }) => {
       <header>
         <h1 className={styles.title}>
           <span className={styles.titleText}>{fixedString(content.title)}</span>
+          {content.nsfw && <span className={styles.tag}>NSFW</span>}
+          {content.spoiler && <span className={styles.tag}>Spoiler</span>}
         </h1>
 
+        {content.nsfw && (
+          <button type="button" onClick={handleHidePostClick}>
+            {hidePost ? 'Show' : 'Hide'} NSFW
+          </button>
         )}
+        {!content.nsfw && content.spoiler && (
+          <button type="button" onClick={handleHidePostClick}>
+            {hidePost ? 'Show' : 'Hide'} Spoiler
+          </button>
         )}
       </header>
 
-      <div className={bodyStyles.media}>
-        {/* Displays single image if provided */}
-        {postData.post_hint === 'image' && (
-          <img src={postData.url_overridden_by_dest} alt="post media" />
-        )}
       {/* Displays link if provided*/}
       {content.post_hint === 'link' && (
         <a
@@ -39,32 +51,25 @@ export const PostBody = ({ content, i }) => {
         </a>
       )}
 
-        {/* TODO: Displays gallery images if provided */}
-        {postData.is_gallery && <img src="" alt="WIP Gallery" />}
-
-        {/* Displays reddit hosted video if provided */}
-        {postData.is_video && (
-          <div>
-            <video preload="auto" controls>
-              <source src={postData.media.reddit_video.fallback_url} />
-              <p>
-                Your browser doesn't surpport HTML5 video. You can view it on
-                <a href={postData.permalink}>Reddit's post</a>
-                instead
-              </p>
-            </video>
+      <div className={styles.box}>
+        <div className={`${hidePost ? styles.blur : styles.show}`}>
+          {/*Displays secondary text if provided*/}
+          <div
+            className={`
+              ${shrinkContent ? styles.shrink : styles.show} 
+              ${styles.body}
+            `}
+            onClick={handleShrinkClick}
+          >
+            <ReactMarkdown children={content.body} />
           </div>
-        )}
-
-        {/* Displays outside reddit video if provided */}
-        {postData.post_hint === 'rich:video' && (
-          <div>
-            <img
-              src={fixedString(postData.secure_media.oembed.thumbnail_url)}
-              alt={postData.secure_media.oembed.title}
-            />
+          <div className={styles.media}>
+            {/* Displays single image if provided */}
+            {content.post_hint === 'image' && (
+              <img src={content.image} alt="post media" />
+            )}
           </div>
-        )}
+        </div>
       </div>
       <footer className={styles.goToReddit}>
         <a

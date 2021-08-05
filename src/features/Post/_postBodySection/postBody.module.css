@@ -13,6 +13,39 @@
     hyphens: manual;
     margin-right: 1rem;
 }
+.tag{
+    border: 1px solid red;
+    border-radius: 2px;
+    font-size: .8rem;
+    letter-spacing: .1rem;
+    color: red;
+    padding: 3px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 1rem;
+}
+.show {
+    filter: blur(0);
+    overflow: visible;
+    width: 100%;
+}
+.box{
+    overflow: hidden;
+}
+.blur { 
+    filter: blur(3rem);
+    overflow: hidden;
+}
+.shrink p:first-of-type { 
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis; 
+    display: block;
+    width: 240px;
+}
+.shrink p + * {
+    display: none;
+}
 
 .body * {
     font-size: 1.2rem;
