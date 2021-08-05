@@ -24,17 +24,33 @@
     vertical-align: middle;
     margin-right: 1rem;
 }
+.hidePost_btn {
+    padding: 0.5rem;
+    margin: 0.5rem;
+    font-size: 1.2rem;
+    color: var(--light-color-shade2);
+    border: 2px solid var(--light-color-shade2);
+    border-radius: 2px;
+    align-self: center;
+}
+.hidePost_btn:hover, .hidePost_btn:focus {
+    color: var(--light-color);
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+}
 .show {
     filter: blur(0);
     overflow: visible;
-    width: 100%;
 }
 .box{
     overflow: hidden;
+    width: 100%;
 }
 .blur { 
     filter: blur(3rem);
+    background-color: var(--light-color-shade1);
     overflow: hidden;
+    width: 100%;
 }
 .shrink p:first-of-type { 
     overflow: hidden;

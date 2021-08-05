@@ -26,17 +26,6 @@ export const PostBody = ({ content, i }) => {
           {content.nsfw && <span className={styles.tag}>NSFW</span>}
           {content.spoiler && <span className={styles.tag}>Spoiler</span>}
         </h1>
-
-        {content.nsfw && (
-          <button type="button" onClick={handleHidePostClick}>
-            {hidePost ? 'Show' : 'Hide'} NSFW
-          </button>
-        )}
-        {!content.nsfw && content.spoiler && (
-          <button type="button" onClick={handleHidePostClick}>
-            {hidePost ? 'Show' : 'Hide'} Spoiler
-          </button>
-        )}
       </header>
 
       {/* Displays link if provided*/}
@@ -49,6 +38,25 @@ export const PostBody = ({ content, i }) => {
         >
           <ImLink /> {`https://${content.domain}`}
         </a>
+      )}
+
+      {content.nsfw && (
+        <button
+          type="button"
+          onClick={handleHidePostClick}
+          className={styles.hidePost_btn}
+        >
+          {hidePost ? 'Show' : 'Hide'} NSFW
+        </button>
+      )}
+      {!content.nsfw && content.spoiler && (
+        <button
+          type="button"
+          onClick={handleHidePostClick}
+          className={styles.hidePost_btn}
+        >
+          {hidePost ? 'Show' : 'Hide'} Spoiler
+        </button>
       )}
 
       <div className={styles.box}>

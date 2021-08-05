@@ -3,6 +3,9 @@ main{
   flex-direction: column;
   padding: 0 1.2rem;
   margin-top: 7rem;
+  color: var(--dark-color);
+  letter-spacing: .05rem;
+  line-height: 1.4;
 }
 .side{
   order: -1;
