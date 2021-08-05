@@ -1,42 +1,43 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import ReactMarkdown from 'react-markdown';
 
 import { fixedString } from '../../../utils/fixString';
 import { ImLink } from 'react-icons/im';
-import bodyStyles from './postBody.module.css';
+import styles from './postBody.module.css';
 
 export const PostBody = ({ content, i }) => {
-  const postData = content.data;
   const displaySubText = sub => {
     return sub.selftext && sub.thumbnail !== 'spoiler' ? true : false;
   };
 
   return (
-    <div>
-      <div>
-        <h3 className={bodyStyles.title}>{fixedString(postData.title)}</h3>
+    <article className={styles.article}>
+      <header>
+        <h1 className={styles.title}>
+          <span className={styles.titleText}>{fixedString(content.title)}</span>
+        </h1>
 
-        {/*Displays secondary text if provided*/}
-        {displaySubText(postData) && (
-          <div className={bodyStyles.selftext}>
-            <ReactMarkdown children={postData.selftext} />
-          </div>
         )}
-
-        {/* Displays link if provided */}
-        {postData.post_hint === 'link' && (
-          <a href={postData.url_overridden_by_dest} className={bodyStyles.link}>
-            <ImLink /> {`https://${postData.domain}`}
-          </a>
         )}
-      </div>
+      </header>
 
       <div className={bodyStyles.media}>
         {/* Displays single image if provided */}
         {postData.post_hint === 'image' && (
           <img src={postData.url_overridden_by_dest} alt="post media" />
         )}
+      {/* Displays link if provided*/}
+      {content.post_hint === 'link' && (
+        <a
+          href={content.url_overridden_by_dest}
+          className={styles.link}
+          target="_blank"
+          rel="nofollow noreferrer"
+        >
+          <ImLink /> {`https://${content.domain}`}
+        </a>
+      )}
 
         {/* TODO: Displays gallery images if provided */}
         {postData.is_gallery && <img src="" alt="WIP Gallery" />}
@@ -65,6 +66,18 @@ export const PostBody = ({ content, i }) => {
           </div>
         )}
       </div>
-    </div>
+      <footer className={styles.goToReddit}>
+        <a
+          href={content.url}
+          referrerPolicy="no-referrer"
+          target="_blank"
+          rel="nofollow noreferrer"
+        >
+          See full reddit post
+        </a>
+      </footer>
+    </article>
   );
 };
+
+export default PostBody;

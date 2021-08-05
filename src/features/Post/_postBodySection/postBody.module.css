@@ -1,18 +1,75 @@
-.title {
-    color: #51637d;
+.article {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
 }
-.selftext {
-    color: #51637d;
-    font-weight: 400;
+.title{
+    padding-top: 1rem;
 }
+.titleText {
+    font-size: 1.6rem;
+    word-wrap: break-word;
+    hyphens: manual;
+    margin-right: 1rem;
+}
+
+.body * {
+    font-size: 1.2rem;
+}
+.body li {
+    list-style-type: disc;
+    margin-left: 1rem;
+}
+
 .link {
-    color: #51637d;
-    font-weight: 400;
+    font-size: 1.2rem;
     text-decoration: none;
+    padding: 0.5rem 0;
+    display: flex;
+    align-items: center;
 }
-.link:hover {
-    color: red;
+.link svg {
+    margin-right: 0.5rem;
+    width: 1.2rem;
+    height: 1.2rem;
+}
+.link:hover, .link:active {
+    color: var(--secondary-color);
     text-decoration: underline;
+    font-weight: 700;
+}
+.goToReddit {
+    background-color: var(--dark-color-tint2);
+    color: var(--light-color);
+    border-radius: 3rem;
+    margin: 1rem 0;
+    padding: 0.5rem 0;
+    display: flex;
+    justify-content: center;
+    width: 75%;
+    align-self: center;
+}
+.goToReddit a {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 1.2rem;
+    color: var(--light-color);
+    text-decoration: none;
+    width: 100%;
+    text-align: center;
+}
+
+.goToReddit:hover, .goToReddit:focus {
+    background-color: var(--secondary-color);
+}
+.goToReddit:active {
+    background-color: var(--dark-color);
+}
+
+@media screen and (min-width:768px)  {
+    .titleText {
+        font-size: 1.8rem;
+    }
 }
 
 .media {
@@ -22,8 +79,8 @@
 
 .media img, .media video{
     background-color: rgb(146, 146, 146);
-    max-height: 512px;
     max-width: 100%;
     margin: 0 auto;
     display: block;
 }
+
