@@ -59,8 +59,12 @@
     display: block;
     width: 240px;
 }
-.shrink p + * {
+.shrink p ~ * {
     display: none;
+}
+
+.body{
+    padding-top: 0.5rem;
 }
 
 .body * {
@@ -114,22 +118,18 @@
 .goToReddit:active {
     background-color: var(--dark-color);
 }
-
+.media {
+    width: 100%;
+}
+.media img, .media video{
+    background-color: var(--dark-color-tint2);
+    max-width: 100%;
+    margin: 0 auto;
+    display: block;
+}
 @media screen and (min-width:768px)  {
     .titleText {
         font-size: 1.8rem;
     }
-}
-
-.media {
-    width: 100%;
-    background-color: #9FA9B7;
-}
-
-.media img, .media video{
-    background-color: rgb(146, 146, 146);
-    max-width: 100%;
-    margin: 0 auto;
-    display: block;
 }
 

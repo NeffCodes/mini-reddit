@@ -40,6 +40,7 @@ export const PostBody = ({ content, i }) => {
         </a>
       )}
 
+      {/*Displays NSFW/Spoiler buttons if needed*/}
       {content.nsfw && (
         <button
           type="button"
@@ -71,14 +72,44 @@ export const PostBody = ({ content, i }) => {
           >
             <ReactMarkdown children={content.body} />
           </div>
-          <div className={styles.media}>
-            {/* Displays single image if provided */}
-            {content.post_hint === 'image' && (
-              <img src={content.image} alt="post media" />
-            )}
-          </div>
+
+          {/*Displays if any media provided*/}
+          {content.hasMedia && (
+            <div className={styles.media}>
+              {/* Displays single image if provided */}
+              {content.post_hint === 'image' && (
+                <img src={content.image} alt="post media" />
+              )}
+
+              {/* Displays reddit hosted video if provided */}
+              {content.is_video && (
+                <div>
+                  <video preload="auto" controls autoPlay loop muted>
+                    <source src={content.media.reddit_video.fallback_url} />
+                    <p>
+                      Your browser doesn't surpport HTML5 video. You can view it
+                      on
+                      <a href={content.permalink}>Reddit's post</a>
+                      instead
+                    </p>
+                  </video>
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* Displays outside reddit video if provided */}
+          {content.post_hint === 'rich:video' && (
+            <div>
+              <img
+                src={fixedString(content.media.oembed.thumbnail_url)}
+                alt={content.media.oembed.title}
+              />
+            </div>
+          )}
         </div>
       </div>
+
       <footer className={styles.goToReddit}>
         <a
           href={content.url}

@@ -3,6 +3,12 @@ const url = 'https://www.reddit.com';
 //Used to clean/limit data provided from api
 const cleanData = arr => {
   return arr.map(sub => {
+    const mediaBool =
+      sub.data.post_hint === 'image' ||
+      sub.data.is_gallery ||
+      sub.data.is_video ||
+      sub.data.post_hint === 'rich:video';
+
     return {
       name: sub.data.subreddit,
       prefix_name: sub.data.subreddit_name_prefixed,
@@ -18,8 +24,12 @@ const cleanData = arr => {
       title: sub.data.title,
       body: sub.data.selftext,
       domain: sub.data.domain,
+      hasMedia: mediaBool,
       post_hint: sub.data.post_hint,
       image: sub.data.url_overridden_by_dest,
+      is_video: sub.data.is_video,
+      media: sub.data.media,
+      thumbnail: sub.data.thumbnail,
     };
   });
 };
