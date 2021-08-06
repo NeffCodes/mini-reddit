@@ -9,7 +9,7 @@
     font-family: var(--main-font);
 }
 .titleText {
-    font-size: 1.6rem;
+    font-size: 1.8rem;
     word-wrap: break-word;
     hyphens: manual;
     margin-right: 1rem;
@@ -80,7 +80,7 @@
 
 .link {
     color: var(--dark-color);
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     text-decoration: none;
     padding: 0.5rem 0;
     display: flex;
@@ -112,8 +112,7 @@
     align-self: center;
 }
 .goToReddit a {
-    font-family: var(--main-font);
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     color: var(--light-color);
     text-decoration: none;
     width: 100%;

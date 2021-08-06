@@ -15,15 +15,17 @@ export const Header = () => {
 
       <Search />
 
-      <a
-        href="https://github.com/persigio/mini-reddit"
-        className={styles.link}
-        aria-label="GitHub"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <FaGithub className={styles.icon} />
-      </a>
+      <div className={styles.link_container}>
+        <a
+          href="https://github.com/persigio/mini-reddit"
+          className={styles.link}
+          aria-label="GitHub"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <FaGithub className={styles.icon} />
+        </a>
+      </div>
     </header>
   );
 };

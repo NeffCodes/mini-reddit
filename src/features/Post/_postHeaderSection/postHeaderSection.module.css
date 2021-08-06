@@ -1,7 +1,7 @@
 .header {
-  display: flex;
-  padding-bottom: 3%;
-  border-bottom: 2px solid var(--dark-color-tint2)
+    display: flex;
+    padding-bottom: 3%;
+    border-bottom: 2px solid var(--dark-color-tint2)
 }
 .avatar {
     color: var(--secondary-color);
