@@ -41,7 +41,7 @@ export const PostBody = ({ content }) => {
       )}
 
       {/*Displays NSFW/Spoiler buttons if needed*/}
-      {content.nsfw && (
+      {(content.nsfw && content.hasMedia || content.body) && (
         <button
           type="button"
           onClick={handleHidePostClick}
