@@ -6,7 +6,10 @@ import {
   selectSubreddits,
   loadSubreddits,
 } from '../../store/AsideSubredditSlice';
-import { setCurrentSubreddit } from '../../store/postFeedSlice';
+import {
+  setCurrentSubreddit,
+  clearSearchTerm,
+} from '../../store/postFeedSlice';
 import Card from '../../components/Card/Card';
 import styles from './AsideSubreddit.module.css';
 import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
@@ -31,6 +34,7 @@ export const AsideSubs = props => {
             onClick={() => {
               setShowList(false);
               dispatch(setCurrentSubreddit(''));
+              dispatch(clearSearchTerm());
             }}
           >
             <span className={styles.avatar}>/r</span> Front Page

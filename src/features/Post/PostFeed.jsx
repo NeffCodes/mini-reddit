@@ -39,14 +39,20 @@ export const PostFeed = props => {
   }
 
   if (!isLoading && posts.length === 0) {
-    return <section className={props.className}>failed to find any</section>;
-  }
-
-  if (!isLoading && hasSearched) {
     return (
       <section className={props.className}>
-        <span>You searched: {searchTerm}</span>
-        <button onClick={handleClick}> Return </button>
+        <Card>Sorry, could not find any posts.</Card>
+      </section>
+    );
+  }
+
+  if (!isLoading && hasSearched && searchTerm) {
+    return (
+      <section className={props.className}>
+        <Card>
+          <span>You searched: {searchTerm}</span>
+          <button onClick={handleClick}> Return </button>
+        </Card>
         <ul>
           {posts.map((post, index) => (
             <li key={post.id}>
