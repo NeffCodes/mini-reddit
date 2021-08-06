@@ -1,0 +1,33 @@
+.loading {
+    color: var(--secondary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 4rem;
+}
+.text {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-weight: bold;
+    font-size: 2rem;
+    padding:0 5px;
+}
+.reddit {
+    width: 20px;
+    height: 20px;
+    margin: 11.5px;
+}
+.circle{ 
+    width:42px;
+    height: 42px;
+    position: absolute;
+    animation: rotation linear 1.6s infinite;
+    transform-origin: 50% 50%;
+}
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}

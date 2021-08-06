@@ -1,0 +1,142 @@
+.article {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+.title{
+    padding-top: 1rem;
+    font-family: var(--main-font);
+}
+.titleText {
+    font-size: 1.8rem;
+    word-wrap: break-word;
+    hyphens: manual;
+    margin-right: 1rem;
+}
+.tag{
+    font-family: var(--sub-font);
+    border: 1px solid red;
+    border-radius: 2px;
+    font-size: .8rem;
+    letter-spacing: .1rem;
+    color: red;
+    padding: 3px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 1rem;
+}
+.hidePost_btn {
+    padding: 0.5rem;
+    margin: 0.5rem;
+    font-size: 1.2rem;
+    color: var(--light-color-shade2);
+    border: 2px solid var(--light-color-shade2);
+    border-radius: 2px;
+    align-self: center;
+}
+.hidePost_btn:hover, .hidePost_btn:focus {
+    color: var(--light-color);
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+}
+.show {
+    filter: blur(0);
+    overflow: visible;
+}
+.box{
+    overflow: hidden;
+    width: 100%;
+}
+.blur { 
+    filter: blur(3rem);
+    background-color: var(--light-color-shade1);
+    overflow: hidden;
+    width: 100%;
+}
+.shrink p:first-of-type { 
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis; 
+    display: block;
+    /* width: 360px; */
+}
+.shrink p ~ * {
+    display: none;
+}
+
+.body{
+    padding-top: 0.5rem;
+    cursor: pointer;
+}
+
+.body * {
+    font-size: 1.2rem;
+}
+.body li {
+    list-style-type: disc;
+    margin-left: 1rem;
+}
+
+.link {
+    color: var(--dark-color);
+    font-size: 1.4rem;
+    text-decoration: none;
+    padding: 0.5rem 0;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+.link svg {
+    margin-right: 0.5rem;
+    width: 1.2rem;
+    height: 1.2rem;
+}
+.link:visited {
+    color: rebeccapurple;
+}
+.link:hover, .link:active {
+    color: var(--secondary-color);
+    text-decoration: underline;
+    font-weight: 700;
+}
+.goToReddit {
+    background-color: var(--dark-color-tint2);
+    color: var(--light-color);
+    border-radius: 3rem;
+    margin: 1rem 0;
+    padding: 0.5rem 0;
+    display: flex;
+    justify-content: center;
+    width: 75%;
+    align-self: center;
+}
+.goToReddit a {
+    font-size: 1.4rem;
+    color: var(--light-color);
+    text-decoration: none;
+    width: 100%;
+    text-align: center;
+}
+
+.goToReddit:hover, .goToReddit:focus {
+    background-color: var(--secondary-color);
+}
+.goToReddit:active {
+    background-color: var(--dark-color);
+}
+.media {
+    width: 100%;
+}
+.media img, .media video{
+    background-color: var(--dark-color-tint2);
+    max-width: 100%;
+    margin: 0 auto;
+    display: block;
+}
+@media screen and (min-width:768px)  {
+    .titleText {
+        font-size: 1.8rem;
+    }
+}
+

@@ -1,13 +1,82 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+@import-normalize;
+@import url('https://fonts.googleapis.com/css2?family=Cabin&family=Roboto+Condensed:wght@700&display=swap');
+
+:root{
+  --dark-color-shade4: #040C12;
+  --dark-color-shade3: #081924;
+  --dark-color-shade2: #0D2636;
+  --dark-color-shade1: #113348;
+  --dark-color: #16405b;
+  --dark-color-tint1: #44667B;
+  --dark-color-tint2: #738C9C;
+
+  --light-color-shade2: #A1B2BD;
+  --light-color-shade1: #D0D8DE;
+  --light-color: #FFFEFF;
+  
+  --secondary-color: #008080;
+
+  --main-font:'Roboto Condensed', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif; 
+  --sub-font:'Cabin', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
+
+/* 
+008080 - l teal
+14695C - d teal
+dc143c - red
+db0a5b - pink */
+}
+
+* {
+  box-sizing: border-box;
+  font-size: 10px;
+}
+
+h1,h2,h3,h4,h5 {
+  margin:0;
+}
+
+body {
+  margin: 0;
+  font-family: var(--sub-font);
+  font-weight: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: var(--light-color-shade1);
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  font-family: var(--main-font);
+  font-weight: bold;
+  color: var(--dark-color);
+  background-color: transparent;
+  padding:0;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+button:hover, button:active {
+  color: var(--secondary-color);
+}
+button:hover {
+  text-decoration: underline;
+}
+button:active {
+  text-decoration: none;
+}
+
+ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }

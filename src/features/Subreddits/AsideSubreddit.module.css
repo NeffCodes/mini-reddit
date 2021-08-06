@@ -1,0 +1,81 @@
+.avatar {
+    margin-right: 1rem;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background-color: var(--light-color);
+    transition: 0.3s;
+    border: 2px solid var(--dark-color);
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.2rem;
+}
+.showButton {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    font-size: 1.6rem;
+    padding: 1rem;
+}
+.subtitle{
+    padding: 1rem;
+    color: var(--dark-color);
+    font-size: 1.8rem;
+}
+.showButton svg {
+    width: 1.6rem;
+    height: 1.6rem;
+}
+
+.subList {
+    border-top: 0.2rem solid var(--dark-color);
+    padding-top: 1.2rem;
+}
+
+.subItem {
+    font-size: 1.6rem;
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    width: 100%;
+    position: relative;
+    transition: 0.2s;
+}
+
+.subItem:hover, .subItem:focus, .subItem:active,
+.subItem:hover .avatar, .subItem:focus .avatar, .subItem:active .avatar{
+    color:var(--light-color);
+    background-color: var(--secondary-color);
+}
+
+
+@media screen and (min-width:768px)  {
+    
+    .subItem:hover, .subItem:focus, .subItem:active {
+        color: var(--secondary-color);
+        background-color: var(--light-color);
+        
+    }
+    .subItem:hover .avatar, .subItem:focus .avatar, .subItem:active .avatar {
+        border-color: var(--secondary-color);
+        color: var(--light-color);
+        background-color: var(--secondary-color);
+    }
+
+    .subItem::after {
+        content: '';
+        border-bottom: 3px solid var(--secondary-color);
+        width: 0;
+        height: 100%;
+        position: absolute;
+        left: 6.4rem;
+        bottom: 1.5rem;
+        transition: 0.5s;
+
+    }
+    .subItem:hover::after, .subItem:focus::after, .subItem:active::after {
+        width: 50%;
+    }
+}
