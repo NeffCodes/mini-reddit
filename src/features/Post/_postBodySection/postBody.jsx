@@ -6,7 +6,7 @@ import { fixedString } from '../../../utils/fixString';
 import { ImLink } from 'react-icons/im';
 import styles from './postBody.module.css';
 
-export const PostBody = ({ content, i }) => {
+export const PostBody = ({ content }) => {
   const initial = content.nsfw || content.spoiler;
   const [hidePost, setHidePost] = useState(initial);
   const [shrinkContent, setShrinkContent] = useState(false);

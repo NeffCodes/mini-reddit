@@ -103,7 +103,6 @@ export const postFeedSlice = createSlice({
       state.currentFilter = 'hot';
       state.posts = action.payload;
       state.posts.forEach((post, i) => {
-        post.index = i;
         post.comments = [];
         post.showComments = false;
         post.isLoadingComments = false;
@@ -130,7 +129,6 @@ export const postFeedSlice = createSlice({
       state.currentFilter = 'new';
       state.posts = action.payload;
       state.posts.forEach((post, i) => {
-        post.index = i;
         post.comments = [];
         post.showComments = false;
         post.isLoadingComments = false;
@@ -157,7 +155,6 @@ export const postFeedSlice = createSlice({
       state.currentFilter = 'top';
       state.posts = action.payload;
       state.posts.forEach((post, i) => {
-        post.index = i;
         post.comments = [];
         post.showComments = false;
         post.isLoadingComments = false;
@@ -185,7 +182,6 @@ export const postFeedSlice = createSlice({
       state.hasSearched = true;
       state.posts = action.payload;
       state.posts.forEach((post, i) => {
-        post.index = i;
         post.comments = [];
         post.showComments = false;
         post.isLoadingComments = false;
@@ -208,6 +204,7 @@ export const selectPostList = state => state.postFeed.posts;
 
 export const selectPostFeed = state => state.postFeed;
 export const selectSearchTerm = state => state.postFeed.searchTerm;
+export const selectCurrentSubreddit = state => state.postFeed.currentSubreddit;
 //action creators & reducer
 export const { setCurrentSubreddit, clearSearchTerm, setSearchTerm } =
   postFeedSlice.actions;
