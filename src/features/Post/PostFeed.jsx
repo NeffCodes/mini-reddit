@@ -6,6 +6,8 @@ import {
   clearSearchTerm,
 } from '../../store/postFeedSlice';
 
+import Card from '../../components/Card/Card';
+import LoadingIcon from '../../components/LoadingIcon/LoadingIcon';
 import Post from './Post';
 import Filters from '../Filters/Filters';
 import './PostFeed.module.css';
@@ -29,7 +31,9 @@ export const PostFeed = props => {
     return (
       <section className={props.className}>
         <Filters />
-        <span>Loading Feed</span>
+        <Card>
+          <LoadingIcon text="Loading Posts" />
+        </Card>
       </section>
     );
   }
