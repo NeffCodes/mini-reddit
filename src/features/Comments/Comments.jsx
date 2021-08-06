@@ -43,14 +43,14 @@ export const Comment = ({ data }) => {
     return (
       <ul>
         {repliesArray.map(reply => (
-          <Comment data={reply.data} key={reply.id} />
+          <Comment data={reply.data} key={reply.data.id} />
         ))}
       </ul>
     );
   };
 
   return (
-    <li className={styles.comment}>
+    <li className={styles.comment} key={data.id}>
       <div className={styles.head}>
         {userAvatar(avatar)}
         <div className={styles.author}>
@@ -68,7 +68,12 @@ export const Comment = ({ data }) => {
           {data.replies && data.replies.data.children.length > 1 && (
             <div>
               <button onClick={handleShowReplies}>
-                Replies {showReplies ? <FaChevronUp className={styles.chevron}/> : <FaChevronDown className={styles.chevron}/>}
+                Replies{' '}
+                {showReplies ? (
+                  <FaChevronUp className={styles.chevron} />
+                ) : (
+                  <FaChevronDown className={styles.chevron} />
+                )}
               </button>
             </div>
           )}
