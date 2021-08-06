@@ -10,7 +10,7 @@ import Card from '../../components/Card/Card';
 import LoadingIcon from '../../components/LoadingIcon/LoadingIcon';
 import Post from './Post';
 import Filters from '../Filters/Filters';
-import './PostFeed.module.css';
+import styles from './PostFeed.module.css';
 
 export const PostFeed = props => {
   const postList = useSelector(selectPostFeed);
@@ -41,7 +41,7 @@ export const PostFeed = props => {
   if (!isLoading && posts.length === 0) {
     return (
       <section className={props.className}>
-        <Card>Sorry, could not find any posts.</Card>
+        <Card className={styles.result}>Sorry, could not find any posts.</Card>
       </section>
     );
   }
@@ -49,9 +49,13 @@ export const PostFeed = props => {
   if (!isLoading && hasSearched && searchTerm) {
     return (
       <section className={props.className}>
-        <Card>
-          <span>You searched: {searchTerm}</span>
-          <button onClick={handleClick}> Return </button>
+        <Card className={styles.search}>
+          <span className={styles.result}>
+            Search results for "{searchTerm}"
+          </span>
+          <button type="button" onClick={handleClick} className={styles.return}>
+            Return
+          </button>
         </Card>
         <ul>
           {posts.map((post, index) => (

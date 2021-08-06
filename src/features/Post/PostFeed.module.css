@@ -1,5 +1,22 @@
-ul{
-    list-style: none;
-    margin: 0;
-    padding: 0;
+.result {
+    font-size: 1.8rem;
+}
+
+.search {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.return {
+    font-size: 1.4rem;
+    color: var(--dark-color-tint2);
+    border: 1px solid var(--dark-color-tint2);
+    border-radius: 2px;
+    padding: 0.5rem 1rem;
+}
+.return:hover, .return:focus {
+    background-color: var(--secondary-color);
+    color: var(--light-color);
+    border-color: var(--secondary-color);
 }
