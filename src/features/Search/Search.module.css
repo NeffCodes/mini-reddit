@@ -1,6 +1,5 @@
 .form {
     display: flex;
-    width: 80%;
 }
 .searchContainer {
     position: relative;
@@ -42,6 +41,8 @@
     font-size: 1.4rem;
 }
 .submit:hover, .submit:focus{
+    color: var(--light-color);
+    text-decoration: none;
     background-color: var(--secondary-color);
     transform: translateY(-0.1rem);
     filter: drop-shadow(0 .1rem 0 var(--dark-color));
@@ -62,9 +63,6 @@
     .input {
         font-size: 1.8rem;
         padding: .75rem .5rem .75rem 1.5rem;
-    }
-    .form{
-        width: 60%;
     }
     .submit {
         font-size: 1.8rem;

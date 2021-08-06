@@ -5,12 +5,15 @@ import {
   setSearchTerm,
   clearSearchTerm,
   loadFilteredPosts,
+  loadHotPosts,
+  selectCurrentSubreddit,
 } from '../../store/postFeedSlice';
 
 import { FaSearch, FaTimesCircle } from 'react-icons/fa';
 import styles from './Search.module.css';
 
 export const Search = () => {
+  const previousSubreddit = useSelector(selectCurrentSubreddit);
   const searchTerm = useSelector(selectSearchTerm);
   const dispatch = useDispatch();
 
@@ -22,6 +25,7 @@ export const Search = () => {
 
   const handleClearInput = () => {
     dispatch(clearSearchTerm());
+    dispatch(loadHotPosts(previousSubreddit));
   };
 
   const handleSubmit = e => {
