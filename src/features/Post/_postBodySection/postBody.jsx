@@ -84,7 +84,7 @@ export const PostBody = ({ content }) => {
               {/* Displays reddit hosted video if provided */}
               {content.is_video && (
                 <div>
-                  <video preload controls muted crossOrigin>
+                  <video preload="auto" controls muted crossOrigin>
                     <source src={content.media.reddit_video.fallback_url} />
                     <p>
                       Your browser doesn't surpport HTML5 video. You can view it
