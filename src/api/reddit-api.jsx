@@ -5,7 +5,6 @@ const cleanData = arr => {
   return arr.map(sub => {
     const mediaBool =
       sub.data.post_hint === 'image' ||
-      sub.data.is_gallery ||
       sub.data.is_video ||
       sub.data.post_hint === 'rich:video';
 
@@ -15,6 +14,7 @@ const cleanData = arr => {
       icon: sub.data.icon_img,
       id: sub.data.id,
       url: sub.data.url,
+      url_overridden_by_dest: sub.data.url_overridden_by_dest,
       permalink: sub.data.permalink,
       time: sub.data.created_utc,
       author: sub.data.author,
