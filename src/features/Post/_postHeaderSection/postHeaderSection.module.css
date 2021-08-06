@@ -32,7 +32,7 @@
     color: var(--dark-color-tint2);
 }
 .timeStamp {
-    font-family: 'Roboto Condensed', sans-serif;
+    font-family: var(--main-font);
     font-size: 1.2rem;
     align-self: flex-start;
     color: var(--dark-color);

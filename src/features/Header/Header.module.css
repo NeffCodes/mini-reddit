@@ -5,9 +5,6 @@
     left:0;
     right:0;
     margin-top:0;
-    /* display: flex;
-    justify-content: space-between;
-    align-items: center; */
     background-color: var(--light-color);
     padding: 1rem 1.2rem;
     border-bottom: 0.2rem solid var(--dark-color);
@@ -15,7 +12,7 @@
     display: grid;
     column-gap: 1rem;
     grid-template-columns: minmax(30px,1fr) minmax(200px, 1030px) minmax(30px,1fr);
-    grid-template-areas: "logo search git"
+    grid-template-areas: "logo search git";
 }
 
 .logo {
@@ -65,7 +62,7 @@
     }
     .logo span {
         font-size: 2rem;
-        font-family: 'Roboto Condensed', sans-serif;
+        font-family: var(--main-font);
         display: inline-block;
     }  
     .link:hover, .link:focus {
