@@ -41,7 +41,8 @@ export const PostBody = ({ content }) => {
       )}
 
       {/*Displays NSFW/Spoiler buttons if needed*/}
-      {(content.nsfw && content.hasMedia || content.body) && (
+      {((content.nsfw && content.hasMedia) ||
+        (content.nsfw && content.body)) && (
         <button
           type="button"
           onClick={handleHidePostClick}
@@ -84,7 +85,7 @@ export const PostBody = ({ content }) => {
               {/* Displays reddit hosted video if provided */}
               {content.is_video && (
                 <div>
-                  <video preload="auto" controls muted crossOrigin>
+                  <video preload="auto" controls muted crossOrigin="anonymous">
                     <source src={content.media.reddit_video.fallback_url} />
                     <p>
                       Your browser doesn't surpport HTML5 video. You can view it
