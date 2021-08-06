@@ -71,7 +71,6 @@ export const fetchSearchResult = async term => {
   const endpoint = `${url}/search.json?q=${term}`;
   const response = await fetch(endpoint);
   const json = await response.json();
-  console.log(json.data.children);
   return cleanData(json.data.children);
 };
 
