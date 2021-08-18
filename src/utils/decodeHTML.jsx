@@ -2,7 +2,7 @@
 //.json file where the string value has
 //& and < are &amp; | &lt; respectively
 
-export const fixedString = str => {
+export const decodeHTML = str => {
   str = str.replace(/&amp;/g, '&');
   str = str.replace(/&lt;/g, '<');
   str = str.replace(/&gt;/g, '>');

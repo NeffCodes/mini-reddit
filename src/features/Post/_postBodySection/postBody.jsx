@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import ReactMarkdown from 'react-markdown';
 
-import { fixedString } from '../../../utils/fixString';
+import { decodeHTML } from '../../../utils/decodeHTML';
 import { ImLink } from 'react-icons/im';
 import styles from './postBody.module.css';
 
@@ -22,7 +22,7 @@ export const PostBody = ({ content }) => {
     <article className={styles.article}>
       <header>
         <h1 className={styles.title}>
-          <span className={styles.titleText}>{fixedString(content.title)}</span>
+          <span className={styles.titleText}>{decodeHTML(content.title)}</span>
           {content.nsfw && <span className={styles.tag}>NSFW</span>}
           {content.spoiler && <span className={styles.tag}>Spoiler</span>}
         </h1>
@@ -103,7 +103,7 @@ export const PostBody = ({ content }) => {
           {content.post_hint === 'rich:video' && (
             <div>
               <img
-                src={fixedString(content.media.oembed.thumbnail_url)}
+                src={decodeHTML(content.media.oembed.thumbnail_url)}
                 alt={content.media.oembed.title}
               />
             </div>
