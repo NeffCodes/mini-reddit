@@ -2,32 +2,29 @@
 @import url('https://fonts.googleapis.com/css2?family=Cabin&family=Roboto+Condensed:wght@700&display=swap');
 
 :root{
-  --dark-color-shade4: #040C12;
-  --dark-color-shade3: #081924;
-  --dark-color-shade2: #0D2636;
-  --dark-color-shade1: #113348;
-  --dark-color: #16405b;
-  --dark-color-tint1: #44667B;
-  --dark-color-tint2: #738C9C;
-
-  --light-color-shade2: #A1B2BD;
-  --light-color-shade1: #D0D8DE;
-  --light-color: #FFFEFF;
+  /* Colors */
+  --neutral-color-9: #040C12;
+  --neutral-color-8: #081924;
+  --neutral-color-7: #0D2636;
+  --neutral-color-6: #113348;
+  --neutral-color-5: #16405b;
+  --neutral-color-4: #507084;
+  --neutral-color-3: #6D8898;
+  --neutral-color-2: #A8B7C1;
+  --neutral-color-1: #E2E7EA;
+  --neutral-color-0: #FFFEFF;
   
-  --secondary-color: #008080;
+  --accent-color-7: #006060;
+  --accent-color-6: #007070;
+  --accent-color-5: #008080;
 
+  /* Typography */
   --main-font:'Roboto Condensed', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif; 
   --sub-font:'Cabin', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
-
-/* 
-008080 - l teal
-14695C - d teal
-dc143c - red
-db0a5b - pink */
 }
 
 * {
@@ -45,7 +42,7 @@ body {
   font-weight: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--light-color-shade1);
+  background: var(--neutral-color-1);
 }
 
 code {
@@ -58,7 +55,7 @@ button {
   border: none;
   font-family: var(--main-font);
   font-weight: bold;
-  color: var(--dark-color);
+  color: var(--neutral-color-5);
   background-color: transparent;
   padding:0;
   display: flex;
@@ -66,7 +63,7 @@ button {
   align-items: center;
 }
 button:hover, button:active {
-  color: var(--secondary-color);
+  color: var(--accent-color-5);
 }
 button:hover {
   text-decoration: underline;

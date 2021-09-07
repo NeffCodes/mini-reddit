@@ -5,8 +5,8 @@
 }
 
 .button{
-    color: var(--light-color-shade2);
-    border: 0.2rem solid var(--light-color-shade2);
+    color: var(--neutral-color-2);
+    border: 0.2rem solid var(--neutral-color-2);
     border-radius: 3rem;
     padding: 0.75rem 1.75rem 0.5rem;
     font-size: 1.6rem;
@@ -22,16 +22,27 @@
     margin-right: 0.5rem;
 }
 
-.button:hover, .button:focus, .button:active, .selected {
-    color: var(--light-color);
-    background-color: var(--secondary-color);
-    border-color: var(--secondary-color);
+.button:hover, .button:focus, .button:active {
+    color: var(--accent-color-5);  
+    border-color: var(--accent-color-5);
+    text-decoration: none;
 }
 
 .selected, .selected:hover, .selected:focus, .selected:active{
     cursor: default;
+    color: var(--neutral-color-0);
     text-decoration: none;
 }
+.selected {
+    color: var(--neutral-color-0);  
+    text-shadow: 0 1px 2px var(--accent-color-7);
+    background-color: var(--accent-color-5);
+    border-color: var(--accent-color-5);
+}
+.selected svg { 
+    filter: drop-shadow(0 1px 1px var(--accent-color-7));
+}
+
 @media screen and (min-width:768px)  {
     .button{
         font-size: 2rem;

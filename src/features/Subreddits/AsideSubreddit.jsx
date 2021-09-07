@@ -27,20 +27,21 @@ export const AsideSubs = props => {
   const subredditList = () => {
     return (
       <ul className={styles.subList}>
-        <li key="sub-home">
-          <button
-            type="button"
-            className={styles.subItem}
-            onClick={() => {
-              setShowList(false);
-              dispatch(setCurrentSubreddit(''));
-              dispatch(clearSearchTerm());
-            }}
-          >
-            <span className={styles.avatar}>/r</span> Front Page
-          </button>
-        </li>
-
+        {subreddits.length > 0 && (
+          <li key="sub-home">
+            <button
+              type="button"
+              className={styles.subItem}
+              onClick={() => {
+                setShowList(false);
+                dispatch(setCurrentSubreddit(''));
+                dispatch(clearSearchTerm());
+              }}
+            >
+              <span className={styles.avatar}>/r</span> Front Page
+            </button>
+          </li>
+        )}
         {subreddits
           .filter(sub => sub.name !== 'Home')
           .map(sub => (
