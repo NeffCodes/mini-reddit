@@ -33,7 +33,6 @@ This project makes use of the following technologies:
 | **Redux** | For application state management |
 | **React-Markdown** | For converting api posts to proper format |
 | **React Icons** | Provides popular icons |
-| **Cypress** | For writing and executing E2E tests |
 
 ---
 
@@ -88,10 +87,6 @@ In the project directory, you can run:
 
 > Launches the test runner in the interactive watch mode.  
 > See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run cypress`
-
-> Launches the cypress test runner for E2E testing watch mode.
 
 ### `npm run build`
 
