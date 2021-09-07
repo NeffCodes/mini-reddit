@@ -3,7 +3,7 @@ main{
   flex-direction: column;
   padding: 0 1.2rem;
   margin-top: 7rem;
-  color: var(--dark-color);
+  color: var(--neutral-color-5);
   letter-spacing: .05rem;
   line-height: 1.4;
 }

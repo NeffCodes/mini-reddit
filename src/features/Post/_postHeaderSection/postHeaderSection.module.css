@@ -1,15 +1,15 @@
 .header {
     display: flex;
     padding-bottom: 3%;
-    border-bottom: 2px solid var(--dark-color-tint2)
+    border-bottom: 2px solid var(--neutral-color-1)
 }
 .avatar {
-    color: var(--secondary-color);
+    color: var(--accent-color-5);
     margin-right: 1rem;
     width: 32px;
     height: 32px;
     border-radius: 50%;
-    border: 2px solid var(--dark-color);
+    border: 2px solid var(--neutral-color-1);
 }
 .details {
     flex-grow:3;
@@ -19,7 +19,7 @@
 .detailsSubreddit {
     font-size: 1.6rem;
     text-align: left;
-    color: var(--dark-color);
+    color: var(--neutral-color-5);
     padding: 0;
 }
 
@@ -29,13 +29,13 @@
 
 .detailsAuthor {
     font-size: 1.2rem;
-    color: var(--dark-color-tint2);
+    color: var(--neutral-color-3);
 }
 .timeStamp {
     font-family: var(--main-font);
     font-size: 1.2rem;
     align-self: flex-start;
-    color: var(--dark-color);
+    color: var(--neutral-color-5);
 }
 
 @media screen and (min-width:768px)  {

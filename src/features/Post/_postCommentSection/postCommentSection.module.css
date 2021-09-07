@@ -1,12 +1,12 @@
 .comments {
-    border-top: 2px solid var(--dark-color-tint2);
-    color: var(--dark-color);
+    border-top: 2px solid var(--neutral-color-1);
+    color: var(--neutral-color-5);
 } 
 
 .button {
     font-family: var(--main-font);
     font-size: 1.2rem;
-    color: var(--dark-color);
+    color: var(--neutral-color-5);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -44,24 +44,24 @@
 .showMoreLess {
     display: flex;
     justify-content: space-around;
-    border-top: 2px solid var(--dark-color);
+    border-top: 2px solid var(--neutral-color-5);
 }
 
 .showMoreLess .button:hover, .showMoreLess .button:focus {
-    background-color: var(--secondary-color);
-    color: var(--light-color);
-    box-shadow: 1px 1px 2px var(--dark-color-shade1);
+    background-color: var(--accent-color-5);
+    color: var(--neutral-color-0);
+    box-shadow: 1px 1px 2px var(--neutral-color-6);
     text-decoration: none;
 }
 
 
 .showMoreLess .button:active {
-    background-color: var(--dark-color);
+    background-color: var(--neutral-color-5);
     box-shadow: none;
 }
 
 .showMoreLess .button + .button{
-    border-left: 2px solid var(--dark-color);
+    border-left: 2px solid var(--neutral-color-5);
 }
 
 .showMoreLess .button:first-of-type {

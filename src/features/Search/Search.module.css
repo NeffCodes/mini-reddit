@@ -10,9 +10,9 @@
     width: 100%;
     font-size: 1.4rem;
     padding: .5rem .25rem .5rem 1.5rem;
-    border: 0.2rem solid var(--dark-color);
+    border: 0.2rem solid var(--neutral-color-5);
     border-radius: 3rem 0 0 3rem;
-    color: var(--dark-color);
+    color: var(--neutral-color-5);
 }
 .clear{
     position: absolute;
@@ -24,14 +24,15 @@
 .clearIcon{
     width: 2rem;
     height: 2rem;
-    color: var(--dark-color-tint3);
+    color: var(--neutral-color-3);
 }
 .clearIcon:hover, .clearIcon:focus, .clearIcon:active {
-    color: var(--dark-color);
+    color: var(--neutral-color-5);
 }
 .submit {
-    background-color: var(--dark-color);
-    color: var(--light-color);
+    background: var(--neutral-color-1);
+    background: linear-gradient(270deg, var(--neutral-color-1) 97%, var(--neutral-color-2) 100%);
+    color: var(--neutral-color-5);
     border-radius: 0 3rem 3rem 0;
     padding: .5rem 1.5rem .5rem .25rem;
     
@@ -41,16 +42,15 @@
     font-size: 1.4rem;
 }
 .submit:hover, .submit:focus{
-    color: var(--light-color);
+    color: var(--neutral-color-0);
     text-decoration: none;
-    background-color: var(--secondary-color);
-    transform: translateY(-0.1rem);
-    filter: drop-shadow(0 .1rem 0 var(--dark-color));
-    transition: all .1s ease;
+    background: var(--accent-color-5);
+    background: linear-gradient(135deg, var(--accent-color-5) 20%, var(--accent-color-6) 100%);
 }
+
 .submit:active {
-    background-color: var(--dark-color);
-    transform: translateY(0);
+    background-color: var(--neutral-color-5);
+    background: linear-gradient(135deg, var(--neutral-color-5) 20%, var(--neutral-color-6) 100%);
     transition: all .1s ease;
 }
 .submitIcon {
