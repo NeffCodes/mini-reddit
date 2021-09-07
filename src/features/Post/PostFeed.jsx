@@ -46,16 +46,18 @@ export const PostFeed = props => {
     return (
       <section className={props.className}>
         <Card className={styles.search}>
-          <p>{returnPhrase}</p>
-          {hasSearched && (
-            <button
-              type="button"
-              onClick={handleClick}
-              className={styles.return}
-            >
-              Return
-            </button>
-          )}
+          <div className={styles.message}>
+            <p>{returnPhrase}</p>
+            {hasSearched && (
+              <button
+                type="button"
+                onClick={handleClick}
+                className={styles.return}
+              >
+                Return
+              </button>
+            )}
+          </div>
           {navigator.doNotTrack && !hasSearched && (
             <p>
               Please note, this site pulls content from Reddit. If you are
@@ -73,10 +75,16 @@ export const PostFeed = props => {
     return (
       <section className={props.className}>
         <Card className={styles.search}>
-          <p>Search results for "{searchTerm}"</p>
-          <button type="button" onClick={handleClick} className={styles.return}>
-            Return
-          </button>
+          <div className={styles.message}>
+            <p>Search results for "{searchTerm}"</p>
+            <button
+              type="button"
+              onClick={handleClick}
+              className={styles.return}
+            >
+              Return
+            </button>
+          </div>
         </Card>
         <ul>
           {posts.map((post, index) => (
