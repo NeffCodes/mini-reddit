@@ -1,13 +1,13 @@
-.result {
-    font-size: 1.8rem;
-}
+
 
 .search {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-
+.search p{
+    font-size: 1.8rem;
+}
 .return {
     font-size: 1.4rem;
     color: var(--neutral-color-3);

@@ -39,9 +39,32 @@ export const PostFeed = props => {
   }
 
   if (!isLoading && posts.length === 0) {
+    let returnPhrase = hasSearched
+      ? `Sorry, could not find any posts for ${searchTerm}.`
+      : 'Error, could not load any posts.';
+
     return (
       <section className={props.className}>
-        <Card className={styles.result}>Sorry, could not find any posts.</Card>
+        <Card className={styles.search}>
+          <p>{returnPhrase}</p>
+          {hasSearched && (
+            <button
+              type="button"
+              onClick={handleClick}
+              className={styles.return}
+            >
+              Return
+            </button>
+          )}
+          {navigator.doNotTrack && !hasSearched && (
+            <p>
+              Please note, this site pulls content from Reddit. If you are
+              having issues loading the content, you may need to enable tracking
+              content by selecting the shield icon in the address bar and turn
+              off blocking.
+            </p>
+          )}
+        </Card>
       </section>
     );
   }
@@ -50,9 +73,7 @@ export const PostFeed = props => {
     return (
       <section className={props.className}>
         <Card className={styles.search}>
-          <span className={styles.result}>
-            Search results for "{searchTerm}"
-          </span>
+          <p>Search results for "{searchTerm}"</p>
           <button type="button" onClick={handleClick} className={styles.return}>
             Return
           </button>
