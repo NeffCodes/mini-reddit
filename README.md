@@ -1,31 +1,18 @@
-# Minimal Reddit [React-Redux Challenge](https://www.codecademy.com/paths/front-end-engineer-career-path/tracks/fecp-react-and-redux-portfolio-project/modules/fecp-reddit-client/kanban_projects/reddit-client)
+# Minimized Reddit
 
-## Description
+The goal of this project was to design and develop a minimized [Reddit](https://www.reddit.com) using Reddit's API with React & Redux.
 
-This project is a portfolio project through [Codecademy](https://codecademy.com) Front-End Engineer course. The goal of the project was to design, develop, and document a minimal [Reddit](https://www.reddit.com) client using React & Redux that displays Reddit's content but does not allow for any contribution.
+**Link to project:** [https://jneff-mini-reddit.netlify.app/](https://jneff-mini-reddit.netlify.app/)
 
-If you would like to see it live, visit the final [Minimal Reddit](https://persigio-mini-reddit.netlify.app/).
-
----
-
-## Table of Contents
-
-- [Wireframes](#wireframes)
-- [Technologies](#technologies)
-- [Features](#features)
-- [Future Additions](#future-additions)
-- [See it Live](https://persigio-mini-reddit.netlify.app/)
-- [Run Locally](#run-locally)
+![Screenshot of Mini-Reddit](./public/screenshot.png)
 
 ---
 
-## Wireframes
-
-These were completed with pen and paper that was then used to layout the site in Figma. However, I still need to get them in digital format to display here
-
-## Technologies
+## How It's Made
 
 This project makes use of the following technologies:
+
+### Technologies
 
 | *Technology*||
 |---|---|
@@ -36,9 +23,7 @@ This project makes use of the following technologies:
 
 ---
 
-## Features
-
-This project allows the user to do the following:
+### Features
 
 | *Feature*||
 |---|---|
@@ -48,26 +33,6 @@ This project allows the user to do the following:
 | **Show NSFW/Spoilers** | Users are able to toggle the view nsfw and spoiler content.   Content is defaulted hidden |
 | **Shorten Text Posts** | Users are able to toggle the body of any post with text to shorten the length displayed |
 | **View Comments** | Users are able to view comments, but not make any |
-
----
-
-## Future Additions
-
-Here are some additional features that I want to add in the future. These were not originally part of the original project parameters, but I think they will ehance the user experience of the site:
-
-- ### About Subreddit Card
-
-- ### Dark / Light Mode
-
-- ### Sharable Links
-
-- ### Upvote / Downvote Display
-
----
-
-## See It Live
-
-See the final [Minimal Reddit](https://persigio-mini-reddit.netlify.app/)
 
 ---
 
